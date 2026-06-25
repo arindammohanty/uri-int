@@ -54,33 +54,36 @@ export default function Footer() {
             </Link>
           </div>
 
-          {/* Upgraded to a 12-column grid for precise, proportional spacing */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-12 w-full items-start">
             
-            {/* Offices Section - Spans 5 columns total */}
+            {/* Offices Section */}
             <div className="flex flex-col md:col-span-2 lg:col-span-5">
               <h3 className="font-bold text-slate-900 mb-6 text-[15px] md:text-base">Offices</h3>
               
               <div className="grid grid-cols-1 sm:grid-cols-5 gap-8 text-slate-500 text-sm font-medium">
-                {/* India Office Sub-column - Smaller width */}
+                
+                {/* India Office Sub-column */}
                 <div className="sm:col-span-2">
-                  <h4 className="text-slate-800 font-bold mb-3 border-b border-slate-100 pb-2">India office</h4>
+                  <h4 className="text-slate-800 font-bold mb-3 border-b border-slate-100 pb-2">India Office</h4>
                   <ul className="space-y-2">
                     <li className="flex items-start">
                       <span className="text-[#FF6B35] mr-2 mt-0.5">•</span>
-                      <span>Shaheed Nagar</span>
+                      <span className="leading-relaxed block break-words">
+                        B-36, 2nd Floor, Rupali Street<br />
+                        Sahid Nagar, Bhubaneswar - 751007
+                      </span>
                     </li>
                   </ul>
                 </div>
 
-                {/* Global Office Sub-column - Larger width for the long address */}
+                {/* Global Office Sub-column */}
                 <div className="sm:col-span-3">
-                  <h4 className="text-slate-800 font-bold mb-3 border-b border-slate-100 pb-2">Global office</h4>
+                  <h4 className="text-slate-800 font-bold mb-3 border-b border-slate-100 pb-2">Global Office</h4>
                   <ul className="space-y-5">
                     <li className="flex items-start">
                       <span className="text-[#FF6B35] mr-2 mt-0.5">-</span>
                       <div className="flex-1">
-                        <span className="text-slate-700 font-bold block mb-1">Business Hub 1</span>
+                        <span className="text-slate-700 font-bold block mb-1">Business Hub - 1:</span>
                         <span className="text-slate-500 leading-relaxed block break-words">
                           1-60/30, Gachibowli - Miyapur Rd,<br />
                           Jayabheri Enclave, Gachibowli,<br />
@@ -90,9 +93,13 @@ export default function Footer() {
                     </li>
                     <li className="flex items-start">
                       <span className="text-[#FF6B35] mr-2 mt-0.5">-</span>
-                      <div>
-                        <span className="text-slate-700 font-bold block mb-1">Business Hub 2</span>
-                        <span className="text-slate-500 block">USA - Malaysia</span>
+                      <div className="flex-1">
+                        <span className="text-slate-700 font-bold block mb-1">Business Hub - 2:</span>
+                        <span className="text-slate-500 leading-relaxed block break-words">
+                          A-10-11, Brickfields,<br />
+                          50470 Kuala Lumpur,<br />
+                          Federal Territory of Kuala Lumpur
+                        </span>
                       </div>
                     </li>
                   </ul>
@@ -100,7 +107,7 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Contact Us - Spans 3 columns to accommodate the email address smoothly */}
+            {/* Contact Us */}
             <div className="flex flex-col lg:col-span-3">
               <h3 className="font-bold text-slate-900 mb-6 text-[15px] md:text-base">Contact us</h3>
               <div className="space-y-1.5 text-slate-500 text-sm font-medium leading-relaxed">
@@ -109,7 +116,7 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Core Services - Spans 2 columns */}
+            {/* Core Services */}
             <div className="flex flex-col lg:col-span-2">
               <h3 className="font-bold text-slate-900 mb-6 text-[15px] md:text-base">Core Services</h3>
               <ul className="space-y-3 text-slate-500 text-sm font-medium">
@@ -120,7 +127,7 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Company - Spans 2 columns */}
+            {/* Company */}
             <div className="flex flex-col lg:col-span-2">
               <h3 className="font-bold text-slate-900 mb-6 text-[15px] md:text-base">Company</h3>
               <ul className="space-y-3 text-slate-500 text-sm font-medium">

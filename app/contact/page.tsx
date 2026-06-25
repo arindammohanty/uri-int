@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { 
-  Phone, Mail, MapPin, CheckCircle, ArrowLeft
+  MapPin, CheckCircle, ArrowLeft
 } from 'lucide-react';
 
 const COUNTRY_CODES = [
@@ -89,9 +89,28 @@ const COUNTRY_CODES = [
   { code: "+967", label: "YE (+967)" }, { code: "+260", label: "ZM (+260)" }, { code: "+263", label: "ZW (+263)" }
 ].sort((a, b) => a.label.localeCompare(b.label));
 
+const OFFICE_LOCATIONS = [
+  {
+    id: 'india',
+    name: 'India Office',
+    address: 'B-36, 2nd Floor, Rupali Street Sahid Nagar , Bhubaneswar - 751007'
+  },
+  {
+    id: 'hub1',
+    name: 'Business Hub - 1',
+    address: '1-60/30, Gachibowli - Miyapur Rd, Jayabheri Enclave, Gachibowli, Hyderabad, Telangana 500032'
+  },
+  {
+    id: 'hub2',
+    name: 'Business Hub - 2',
+    address: 'A-10-11, Brickfields, 50470 Kuala Lumpur, Federal Territory of Kuala Lumpur'
+  }
+];
+
 export default function ContactPage() {
   const [formType, setFormType] = useState<'business' | 'career'>('business');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [activeLocation, setActiveLocation] = useState(0);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -103,7 +122,7 @@ export default function ContactPage() {
       
       <section className="relative pt-20 pb-16 border-b border-slate-100 bg-slate-50/50 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-50"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <div className="relative max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-12 z-10">
           <div className="flex items-center text-sm font-medium text-slate-500 mb-4">
             <span>Home</span>
             <span className="mx-2 text-slate-300">{'>'}</span>
@@ -116,44 +135,55 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 lg:py-24 max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           
           <div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">Let&apos;s Connect</h2>
-            <p className="text-lg text-slate-500 mb-12 leading-relaxed">
+            <p className="text-lg text-slate-500 mb-8 leading-relaxed">
               Reach out to our architects. We respond to all technical inquiries within one business day.
             </p>
             
-            <div className="space-y-8">
-              <div className="flex items-start space-x-4">
-                <div className="bg-orange-50 p-3 rounded-full text-orange-500 mt-1">
-                  <Phone className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-slate-900">Phone</h3>
-                  <p className="text-slate-500 mt-1">+91 674 6066050</p>
-                </div>
+            <div className="mt-8 space-y-6">
+              <div className="flex flex-wrap gap-3">
+                {OFFICE_LOCATIONS.map((loc, idx) => (
+                  <button
+                    key={loc.id}
+                    type="button"
+                    onClick={() => setActiveLocation(idx)}
+                    className={`px-5 py-2.5 text-sm font-bold rounded-xl transition-all ${
+                      activeLocation === idx 
+                        ? 'bg-orange-500 text-white shadow-md shadow-orange-500/20' 
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
+                    }`}
+                  >
+                    {loc.name}
+                  </button>
+                ))}
               </div>
               
-              <div className="flex items-start space-x-4">
-                <div className="bg-orange-50 p-3 rounded-full text-orange-500 mt-1">
-                  <Mail className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-slate-900">Email</h3>
-                  <p className="text-slate-500 mt-1">info@uritechnologies.com</p>
-                </div>
+              <div className="w-full h-[400px] md:h-[450px] rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 relative">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  scrolling="no"
+                  marginHeight={0}
+                  marginWidth={0}
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(OFFICE_LOCATIONS[activeLocation].address)}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
+                  title={OFFICE_LOCATIONS[activeLocation].name}
+                  className="absolute inset-0"
+                ></iframe>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="bg-orange-50 p-3 rounded-full text-orange-500 mt-1">
+              <div className="flex items-start space-x-4 bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                <div className="bg-orange-100 p-3 rounded-full text-orange-500 shrink-0">
                   <MapPin className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900">Address</h3>
-                  <p className="text-slate-500 mt-1 leading-relaxed">
-                    B-36, 2nd Floor, Rupali Street, Sahid Nagar,<br/>Bhubaneswar - 751007, Odisha
+                  <h3 className="text-base font-bold text-slate-900 mb-1">{OFFICE_LOCATIONS[activeLocation].name}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed font-medium">
+                    {OFFICE_LOCATIONS[activeLocation].address}
                   </p>
                 </div>
               </div>
