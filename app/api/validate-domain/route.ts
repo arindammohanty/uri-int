@@ -89,7 +89,7 @@ export async function POST(request: Request) {
           { status: 400 }
         );
       }
-    } catch (dnsError) {
+    } catch {
       return NextResponse.json(
         { valid: false, error: 'The domain provider is invalid or unreachable.' },
         { status: 400 }
@@ -109,7 +109,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ valid: true });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ valid: true });
   }
 }

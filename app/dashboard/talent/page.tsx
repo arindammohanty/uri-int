@@ -5,7 +5,7 @@ import { supabase } from '@/lib/supabase';
 import { Loader2, LogOut } from 'lucide-react';
 
 export default function TalentDashboardMock() {
-  const [sessionData, setSessionData] = useState<any>(null);
+  const [sessionData, setSessionData] = useState<Record<string, unknown> | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

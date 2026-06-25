@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Star, CheckCircle, ArrowRight, Briefcase, HelpCircle } from 'lucide-react';
+import { Star, CheckCircle, ArrowRight, HelpCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const MOCK_TESTIMONIALS = [

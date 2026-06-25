@@ -4,7 +4,6 @@ import { supabase } from '@/lib/supabase';
 import React, { useState } from 'react';
 import { Eye, EyeOff, Loader2, Mail, Lock } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 type TabMode = 'Company' | 'Talent';
 
@@ -88,7 +87,7 @@ export default function CRNLoginPage() {
         throw new Error(error.message); 
       }
 
-      const { data: profileData, error: profileError } = await supabase
+      const { data: profileData } = await supabase
         .from('user_profiles')
         .select('role')
         .eq('id', data.user.id)
@@ -102,12 +101,13 @@ export default function CRNLoginPage() {
       console.log('Analytics Event: login_success');
       window.location.href = activeTab === 'Company' ? '/dashboard/company' : '/dashboard/talent';
       
-    } catch (error: any) {
-       console.log('Analytics Event: login_failure - Reason:', error.message);
-       if (error.message === 'Invalid login credentials') {
+    } catch (error) {
+       const err = error as Error;
+       console.log('Analytics Event: login_failure - Reason:', err.message);
+       if (err.message === 'Invalid login credentials') {
          setErrorMsg('Invalid email or password. Please try again.');
        } else {
-         setErrorMsg(error.message || 'Something went wrong. Please check your connection and try again.');
+         setErrorMsg(err.message || 'Something went wrong. Please check your connection and try again.');
        }
     } finally {
       setLoading(false);
@@ -143,7 +143,7 @@ export default function CRNLoginPage() {
 
           <div className="border border-slate-200 rounded-[2rem] p-8 max-w-xl relative mt-12 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
             <p className="text-[#A0A4A8] leading-relaxed mb-8 font-medium">
-              From the initial conversations all the way through to the project's successful conclusion, URI Technologies has delivered consistently. Their unique strategy have resulted in a discernible rise in our customers' trust and happiness. URI Technologies is a great option if you wish to evolve your company's digital strategy.
+              From the initial conversations all the way through to the project&apos;s successful conclusion, URI Technologies has delivered consistently. Their unique strategy have resulted in a discernible rise in our customers&apos; trust and happiness. URI Technologies is a great option if you wish to evolve your company&apos;s digital strategy.
             </p>
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full overflow-hidden bg-slate-100 flex-shrink-0">
@@ -313,7 +313,7 @@ export default function CRNLoginPage() {
             </div>
 
             <div className="text-center">
-              <span className="text-[13px] font-semibold text-[#2D333A]">Don't have an account? </span>
+              <span className="text-[13px] font-semibold text-[#2D333A]">Don&apos;t have an account? </span>
               <Link 
                 href="#" 
                 onClick={() => console.log('Analytics Event: create_account_click')}
