@@ -73,8 +73,8 @@ export default function HomePage() {
             <div className="flex items-center space-x-4">
               <div className="flex -space-x-3">
                 {[1,2,3].map(i => (
-                  <img key={i} className="w-10 h-10 rounded-full border-2 border-white object-cover bg-slate-100 shadow-md" 
-                       src={`/avatars/hero-avatar-${i}.svg`} alt="User" 
+                  <Image key={i} className="w-10 h-10 rounded-full border-2 border-white object-cover bg-slate-100 shadow-md" 
+                       src={`/avatars/hero-avatar-${i}.svg`} alt="User" width={40} height={40} unoptimized
                        onError={(e) => { (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=Client+${i}&background=0F172A&color=fff` }}/>
                 ))}
               </div>
@@ -178,7 +178,7 @@ export default function HomePage() {
                   <div className="relative mb-8 inline-flex items-center justify-center">
                     <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 blur-xl rounded-full transition-opacity duration-500 pointer-events-none scale-[2.0]"></div>
                     <div className="w-16 h-16 flex items-center justify-center bg-slate-800 border border-slate-700 rounded-2xl text-white group-hover:bg-white group-hover:border-white transition-all duration-300 shadow-md relative z-10">
-                      <img src={ind.icon} alt={ind.name} className="w-8 h-8 object-contain invert brightness-0 group-hover:invert-0 group-hover:brightness-100 transition-all duration-300" onError={(e) => { e.currentTarget.style.display='none'; }} />
+                      <Image src={ind.icon} alt={ind.name} width={32} height={32} unoptimized className="w-8 h-8 object-contain invert brightness-0 group-hover:invert-0 group-hover:brightness-100 transition-all duration-300" onError={(e) => { e.currentTarget.style.display='none'; }} />
                     </div>
                   </div>
                   
@@ -215,7 +215,7 @@ export default function HomePage() {
                   <p className="text-slate-900 mb-8 leading-relaxed font-bold text-[15px]">&quot;{testimonial.content}&quot;</p>
                 </div>
                 <div className="flex items-center">
-                  <img src={testimonial.image} alt={testimonial.name} className="w-12 h-12 rounded-full mr-4 bg-slate-200 object-cover" />
+                  <Image src={testimonial.image} alt={testimonial.name} width={48} height={48} unoptimized className="w-12 h-12 rounded-full mr-4 bg-slate-200 object-cover" />
                   <div>
                     <h4 className="font-extrabold text-slate-900">{testimonial.name}</h4>
                     <p className="text-sm text-slate-600 font-bold">{testimonial.role}</p>
