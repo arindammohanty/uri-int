@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react';
 import { 
   Eye, Zap, Gem, Shield, Handshake, Users, CheckCircle
 } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 
 const PROCESS_STEPS = [
   { title: 'Discover Needs', desc: 'We begin by understanding your business challenges and objectives.' },
@@ -13,10 +13,58 @@ const PROCESS_STEPS = [
   { title: 'Monitor & Optimize', desc: 'Post-deployment, we continuously monitor and refine for optimal performance.' }
 ];
 
+// 1. Extracted Step Component to safely use Framer Motion hooks inside the map
+function ProcessStep({ 
+  item, 
+  index, 
+  totalSteps, 
+  scrollYProgress 
+}: { 
+  item: { title: string, desc: string }, 
+  index: number, 
+  totalSteps: number, 
+  scrollYProgress: MotionValue<number> 
+}) {
+  const isLast = index === totalSteps - 1;
+  const stepThreshold = index / (totalSteps - 1);
+  
+  // Safe top-level hook call within the sub-component
+  const iconColor = useTransform(
+    scrollYProgress,
+    [stepThreshold - 0.2, stepThreshold], 
+    ["#cbd5e1", "#f97316"] 
+  );
+
+  return (
+    <div className="relative pl-14 flex flex-col justify-center min-h-[40px]">
+      
+      {isLast && (
+        <div className="absolute left-0 top-[38px] bottom-[-50px] w-12 bg-white" />
+      )}
+
+      <motion.div 
+        className="absolute left-0 top-[-2px] w-10 h-10 bg-white rounded-full flex items-center justify-center z-10"
+        style={{ color: iconColor }}
+      >
+        <CheckCircle className="w-8 h-8 bg-white rounded-full shadow-[0_0_0_4px_white]" />
+      </motion.div>
+      
+      <motion.div 
+        initial={{ opacity: 0, x: 20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+      >
+        <h4 className="text-xl font-bold text-slate-900">{item.title}</h4>
+        <p className="text-slate-500 mt-2 text-lg">{item.desc}</p>
+      </motion.div>
+    </div>
+  );
+}
+
 export default function AboutPage() {
   const processRef = useRef<HTMLDivElement>(null);
   
-  // Track which card is active (default is 'mission')
   const [activeCard, setActiveCard] = useState<'mission' | 'vision'>('mission');
   
   const { scrollYProgress } = useScroll({
@@ -29,7 +77,6 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 pb-20">
       
-      {/* Hero Section */}
       <section className="relative pt-20 pb-16 border-b border-slate-100 bg-slate-50/50 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-50"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
@@ -45,7 +92,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Story Section */}
       <section className="py-20 lg:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
@@ -76,7 +122,6 @@ export default function AboutPage() {
         </div>
       </section>
       
-      {/* Stats Row */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
           {[
@@ -93,11 +138,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission & Vision Split - INTERACTIVE */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
-          {/* Mission Card */}
           <div 
             className={`p-10 md:p-14 rounded-[2rem] transition-all duration-500 cursor-pointer ease-out ${
               activeCard === 'mission' 
@@ -124,7 +167,6 @@ export default function AboutPage() {
             </p>
           </div>
           
-          {/* Vision Card */}
           <div 
             className={`p-10 md:p-14 rounded-[2rem] transition-all duration-500 cursor-pointer ease-out ${
               activeCard === 'vision' 
@@ -154,7 +196,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* What We Stand For */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-12 text-center">What We Stand For</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -177,7 +218,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Process Highlights */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="sticky top-24">
@@ -198,42 +238,16 @@ export default function AboutPage() {
             </div>
 
             <div className="space-y-12 relative z-10">
-              {PROCESS_STEPS.map((item, i) => {
-                const isLast = i === PROCESS_STEPS.length - 1;
-                const stepThreshold = i / (PROCESS_STEPS.length - 1);
-                
-                const iconColor = useTransform(
-                  scrollYProgress,
-                  [stepThreshold - 0.2, stepThreshold], 
-                  ["#cbd5e1", "#f97316"] 
-                );
-
-                return (
-                  <div key={i} className="relative pl-14 flex flex-col justify-center min-h-[40px]">
-                    
-                    {isLast && (
-                      <div className="absolute left-0 top-[38px] bottom-[-50px] w-12 bg-white" />
-                    )}
-
-                    <motion.div 
-                      className="absolute left-0 top-[-2px] w-10 h-10 bg-white rounded-full flex items-center justify-center z-10"
-                      style={{ color: iconColor }}
-                    >
-                      <CheckCircle className="w-8 h-8 bg-white rounded-full shadow-[0_0_0_4px_white]" />
-                    </motion.div>
-                    
-                    <motion.div 
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, margin: "-100px" }}
-                      transition={{ duration: 0.5, delay: i * 0.1 }}
-                    >
-                      <h4 className="text-xl font-bold text-slate-900">{item.title}</h4>
-                      <p className="text-slate-500 mt-2 text-lg">{item.desc}</p>
-                    </motion.div>
-                  </div>
-                );
-              })}
+              {/* 2. Map through the new extracted child component */}
+              {PROCESS_STEPS.map((item, i) => (
+                <ProcessStep 
+                  key={i} 
+                  item={item} 
+                  index={i} 
+                  totalSteps={PROCESS_STEPS.length} 
+                  scrollYProgress={scrollYProgress} 
+                />
+              ))}
             </div>
           </div>
         </div>
