@@ -162,7 +162,7 @@ export default function ContactPage() {
                 ))}
               </div>
               
-              <div className="w-full h-[400px] md:h-[450px] rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 relative">
+              <div className="w-full h-[500px] md:h-[650px] rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 relative">
                 <iframe
                   width="100%"
                   height="100%"
@@ -174,18 +174,6 @@ export default function ContactPage() {
                   title={OFFICE_LOCATIONS[activeLocation].name}
                   className="absolute inset-0"
                 ></iframe>
-              </div>
-
-              <div className="flex items-start space-x-4 bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                <div className="bg-orange-100 p-3 rounded-full text-orange-500 shrink-0">
-                  <MapPin className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-slate-900 mb-1">{OFFICE_LOCATIONS[activeLocation].name}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed font-medium">
-                    {OFFICE_LOCATIONS[activeLocation].address}
-                  </p>
-                </div>
               </div>
             </div>
           </div>

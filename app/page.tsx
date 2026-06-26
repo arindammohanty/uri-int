@@ -28,7 +28,7 @@ const INDUSTRIES = [
   { name: 'Telecommunications', desc: 'Low-latency networks, 5G infrastructure management, and OSS/BSS integrations.', icon: '/industries/it-software.svg' }
 ];
 
-const CLIENT_LOGOS = ["IBM", "Salesforce", "SAP", "Oracle", "Microsoft", "Amazon Web Services", "Cisco"];
+const CLIENT_LOGOS = ["IBM", "Salesforce", "SAP", "Oracle", "Microsoft", "Amazon", "Cisco"];
 
 export default function HomePage() {
   const [formData, setFormData] = useState({ name: '', email: '', company: '', requirement: '' });
@@ -117,7 +117,7 @@ export default function HomePage() {
             transition={{ repeat: Infinity, ease: "linear", duration: 40 }}
           >
             {[...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS].map((logo, i) => (
-              <div key={i} className="flex-shrink-0 text-2xl md:text-3xl font-extrabold text-slate-900/50 hover:text-slate-900/90 transition-colors cursor-default select-none tracking-tight">
+              <div key={i} className="flex-shrink-0 text-2xl md:text-xl font-extrabold text-slate-900/50 hover:text-slate-900/90 transition-colors cursor-default select-none tracking-tight">
                 {logo}
               </div>
             ))}
@@ -130,7 +130,7 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 tracking-tight drop-shadow-sm">About URI Technologies</h2>
             <p className="text-slate-800 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed font-medium mb-8">
-              For over a decade, URI Technologies has been a trusted global partner delivering scalable, secure, and future-ready digital solutions. We help clients envision, design, build, and manage tech architectures in an innovative, collaborative, and secure manner.
+              Established in 2013, URI Technologies is a global leader in digital services and solutions. Founded by a team of professionals with diverse industry expertise, we are dedicated to helping clients envision, design, build, and manage digital solutions in an innovative, collaborative, and secure manner. Our commitment to best practices in governance, quality, compliance, and risk management ensures that we deliver excellence in every project.
             </p>
             <Link href="/about" className="inline-flex items-center text-slate-900 font-extrabold text-[15px] hover:text-white transition-colors bg-white/20 px-6 py-2 rounded-full backdrop-blur-md border border-white/40">
               Read Our Full Story <ArrowRight className="ml-1.5 w-4 h-4" />

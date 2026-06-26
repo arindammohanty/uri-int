@@ -60,8 +60,8 @@ export default function AboutPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
           {[
-            { num: '500+', label: 'Projects Delivered' },
-            { num: '100+', label: 'Global Clients' },
+            { num: '200+', label: 'Projects Delivered' },
+            { num: '50+', label: 'Global Clients' },
             { num: '12+', label: 'Years Experience' },
             { num: '24/7', label: 'Post-Project Support' }
           ].map((stat, i) => (
@@ -127,10 +127,10 @@ export default function AboutPage() {
           
           <div className="space-y-8">
             {[
-              { title: '01. Identify Challenges', desc: 'We begin by understanding specific constraints and operational blockers.' },
-              { title: '02. Analyze Requirements', desc: 'Conducting thorough evaluations to map business objectives with tech infrastructure.' },
-              { title: '03. Deliver Solutions', desc: 'Building and deploying solutions that drive efficiency, innovation, and growth.' },
-              { title: '04. Monitor & Optimize', desc: 'Providing 24/7 post-deployment support and iterative refinement loops.' }
+              { title: 'Discover Needs', desc: 'We begin by understanding your buisness challenges and objectectives.' },
+              { title: 'Analyze & Stratergize', desc: 'Our experts analyse the requirements to crft a tailored stratergy.' },
+              { title: 'Implement Solutions', desc: 'We develop and deply solutions that align with your goals.' },
+              { title: 'Monitor & Optimize', desc: 'Post-deployment, we continuously monitor and refine for optimal performance.' }
             ].map((item, i) => (
               <div key={i} className="flex items-start">
                 <div className="flex-shrink-0 mt-1">
