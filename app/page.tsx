@@ -12,13 +12,6 @@ const MOCK_TESTIMONIALS = [
   { id: 3, name: "Michael T.", role: "Director of InfoSec", image: "https://ui-avatars.com/api/?name=Michael+T&background=FF824D&color=fff", content: "Their Zero-Trust Cyber Security frameworks secured our hybrid environments effortlessly. We now have complete observability and robust compliance controls in place." }
 ];
 
-const ABOUT_IMAGES = [
-  { src: '/images/500_Projects.png', alt: '500+ Projects Delivered', title: '500+', desc: 'PROJECTS DELIVERED' },
-  { src: '/images/100_clients.png', alt: '100+ Global Clients', title: '100+', desc: 'GLOBAL CLIENTS' },
-  { src: '/images/iso_certified.png', alt: 'ISO Certified', title: 'ISO', desc: 'CERTIFIED AGENCY' },
-  { src: '/images/dedicated_support.png', alt: '24/7 Dedicated Support', title: '24/7', desc: 'DEDICATED SUPPORT' }
-];
-
 const INDUSTRIES = [
   { name: 'Technology & SaaS', desc: 'Scalable cloud architectures, agile DevOps pipelines, and robust microservices.', icon: '/industries/it-software.svg' },
   { name: 'Manufacturing & IoT', desc: 'Smart factory automation, supply chain visibility, and real-time sensor analytics.', icon: '/industries/manufacturing.svg' },
@@ -33,6 +26,7 @@ const CLIENT_LOGOS = ["IBM", "Salesforce", "SAP", "Oracle", "Microsoft", "Amazon
 export default function HomePage() {
   const [formData, setFormData] = useState({ name: '', email: '', company: '', requirement: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [activeCard, setActiveCard] = useState<'mission' | 'vision'>('mission');
   
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -137,14 +131,76 @@ export default function HomePage() {
             </Link>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-12">
-            {ABOUT_IMAGES.map((img, i) => (
-              <div key={i} className="bg-white/70 backdrop-blur-xl border border-white/50 rounded-3xl p-3 flex flex-col items-center text-center shadow-xl shadow-orange-900/5 hover:-translate-y-1 hover:shadow-2xl transition-all group">
-                <div className="relative w-full h-48 sm:h-56 lg:h-64 overflow-hidden rounded-2xl bg-white/50">
-                  <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
+          {/* Stats Row */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8 mt-12 mb-10">
+            {[
+              { num: '200+', label: 'Projects Delivered' },
+              { num: '50+', label: 'Global Clients' },
+              { num: '12+', label: 'Years Experience' },
+              { num: '24/7', label: 'Post-Project Support' }
+            ].map((stat, i) => (
+              <div key={i} className="bg-white/80 backdrop-blur-xl border border-white/60 p-8 rounded-[2rem] shadow-xl shadow-slate-200/50 text-center hover:-translate-y-1 hover:border-orange-500/30 transition-all duration-300">
+                <div className="text-4xl md:text-5xl font-extrabold text-[#FF824D] mb-2">{stat.num}</div>
+                <div className="text-sm md:text-base font-bold text-slate-700">{stat.label}</div>
               </div>
             ))}
+          </div>
+
+          {/* Mission & Vision Split - INTERACTIVE */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Mission Card */}
+            <div 
+              className={`p-10 md:p-14 rounded-[2rem] transition-all duration-500 cursor-pointer ease-out text-left ${
+                activeCard === 'mission' 
+                  ? 'bg-[#FF824D] shadow-xl shadow-orange-500/10 scale-100' 
+                  : 'bg-white/80 backdrop-blur-xl border border-white/60 shadow-xl shadow-slate-200/50 scale-[0.98]'
+              }`}
+              onMouseEnter={() => setActiveCard('mission')}
+              onClick={() => setActiveCard('mission')}
+            >
+              <h4 className={`font-bold tracking-wider text-sm uppercase mb-4 transition-colors duration-500 ${
+                activeCard === 'mission' ? 'text-orange-100' : 'text-[#FF824D]'
+              }`}>
+                Our Mission
+              </h4>
+              <h3 className={`text-2xl md:text-3xl font-bold mb-4 leading-tight transition-colors duration-500 ${
+                activeCard === 'mission' ? 'text-white' : 'text-slate-900'
+              }`}>
+                Managing operational complexity for long-term business value.
+              </h3>
+              <p className={`text-base md:text-lg leading-relaxed transition-colors duration-500 ${
+                activeCard === 'mission' ? 'text-orange-50' : 'text-slate-600'
+              }`}>
+                To empower organizations by managing operational complexity through agile, reliable, and compliant solutions. We craft technology that creates measurable, sustainable impact across global enterprise boundaries.
+              </p>
+            </div>
+            
+            {/* Vision Card */}
+            <div 
+              className={`p-10 md:p-14 rounded-[2rem] transition-all duration-500 cursor-pointer ease-out text-left ${
+                activeCard === 'vision' 
+                  ? 'bg-[#FF824D] shadow-xl shadow-orange-500/10 scale-100' 
+                  : 'bg-white/80 backdrop-blur-xl border border-white/60 shadow-xl shadow-slate-200/50 scale-[0.98]'
+              }`}
+              onMouseEnter={() => setActiveCard('vision')}
+              onClick={() => setActiveCard('vision')}
+            >
+              <h4 className={`font-bold tracking-wider text-sm uppercase mb-4 transition-colors duration-500 ${
+                activeCard === 'vision' ? 'text-orange-100' : 'text-[#FF824D]'
+              }`}>
+                Our Vision
+              </h4>
+              <h3 className={`text-2xl md:text-3xl font-bold mb-4 leading-tight transition-colors duration-500 ${
+                activeCard === 'vision' ? 'text-white' : 'text-slate-900'
+              }`}>
+                To be a global center of excellence in digital transformation.
+              </h3>
+              <p className={`text-base md:text-lg leading-relaxed transition-colors duration-500 ${
+                activeCard === 'vision' ? 'text-orange-50' : 'text-slate-600'
+              }`}>
+                We aim to become the premier partner for digital transformation and managed services, shaping smarter enterprises for tomorrow through our commitment to innovation, quality, and rigorous security standards.
+              </p>
+            </div>
           </div>
         </div>
       </section>
