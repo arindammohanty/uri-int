@@ -1,11 +1,31 @@
 "use client";
 
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { 
   Eye, Zap, Gem, Shield, Handshake, Users, CheckCircle
 } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+
+const PROCESS_STEPS = [
+  { title: 'Discover Needs', desc: 'We begin by understanding your business challenges and objectives.' },
+  { title: 'Analyze & Strategize', desc: 'Our experts analyze the requirements to craft a tailored strategy.' },
+  { title: 'Implement Solutions', desc: 'We develop and deploy solutions that align with your goals.' },
+  { title: 'Monitor & Optimize', desc: 'Post-deployment, we continuously monitor and refine for optimal performance.' }
+];
 
 export default function AboutPage() {
+  const processRef = useRef<HTMLDivElement>(null);
+  
+  // Track which card is active (default is 'mission')
+  const [activeCard, setActiveCard] = useState<'mission' | 'vision'>('mission');
+  
+  const { scrollYProgress } = useScroll({
+    target: processRef,
+    offset: ["start center", "end center"] 
+  });
+
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 pb-20">
       
@@ -73,20 +93,64 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission & Vision Split */}
+      {/* Mission & Vision Split - INTERACTIVE */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-orange-500 p-10 md:p-14 rounded-[2rem] text-white shadow-xl shadow-orange-500/10">
-            <h4 className="text-orange-100 font-bold tracking-wider text-sm uppercase mb-4">Our Mission</h4>
-            <h3 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">Managing operational complexity for long-term business value.</h3>
-            <p className="text-orange-50 text-lg leading-relaxed">To empower organizations by managing operational complexity through agile, reliable, and compliant solutions. We craft technology that creates measurable, sustainable impact across global enterprise boundaries.</p>
+          
+          {/* Mission Card */}
+          <div 
+            className={`p-10 md:p-14 rounded-[2rem] transition-all duration-500 cursor-pointer ease-out ${
+              activeCard === 'mission' 
+                ? 'bg-orange-500 shadow-xl shadow-orange-500/10 scale-100' 
+                : 'bg-slate-50 border border-slate-100 scale-[0.98]'
+            }`}
+            onMouseEnter={() => setActiveCard('mission')}
+            onClick={() => setActiveCard('mission')}
+          >
+            <h4 className={`font-bold tracking-wider text-sm uppercase mb-4 transition-colors duration-500 ${
+              activeCard === 'mission' ? 'text-orange-100' : 'text-orange-500'
+            }`}>
+              Our Mission
+            </h4>
+            <h3 className={`text-3xl md:text-4xl font-bold mb-6 leading-tight transition-colors duration-500 ${
+              activeCard === 'mission' ? 'text-white' : 'text-slate-900'
+            }`}>
+              Managing operational complexity for long-term business value.
+            </h3>
+            <p className={`text-lg leading-relaxed transition-colors duration-500 ${
+              activeCard === 'mission' ? 'text-orange-50' : 'text-slate-600'
+            }`}>
+              To empower organizations by managing operational complexity through agile, reliable, and compliant solutions. We craft technology that creates measurable, sustainable impact across global enterprise boundaries.
+            </p>
           </div>
           
-          <div className="bg-slate-50 border border-slate-100 p-10 md:p-14 rounded-[2rem]">
-            <h4 className="text-orange-500 font-bold tracking-wider text-sm uppercase mb-4">Our Vision</h4>
-            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">To be a global center of excellence in digital transformation.</h3>
-            <p className="text-slate-600 text-lg leading-relaxed">We aim to become the premier partner for digital transformation and managed services, shaping smarter enterprises for tomorrow through our commitment to innovation, quality, and rigorous security standards.</p>
+          {/* Vision Card */}
+          <div 
+            className={`p-10 md:p-14 rounded-[2rem] transition-all duration-500 cursor-pointer ease-out ${
+              activeCard === 'vision' 
+                ? 'bg-orange-500 shadow-xl shadow-orange-500/10 scale-100' 
+                : 'bg-slate-50 border border-slate-100 scale-[0.98]'
+            }`}
+            onMouseEnter={() => setActiveCard('vision')}
+            onClick={() => setActiveCard('vision')}
+          >
+            <h4 className={`font-bold tracking-wider text-sm uppercase mb-4 transition-colors duration-500 ${
+              activeCard === 'vision' ? 'text-orange-100' : 'text-orange-500'
+            }`}>
+              Our Vision
+            </h4>
+            <h3 className={`text-3xl md:text-4xl font-bold mb-6 leading-tight transition-colors duration-500 ${
+              activeCard === 'vision' ? 'text-white' : 'text-slate-900'
+            }`}>
+              To be a global center of excellence in digital transformation.
+            </h3>
+            <p className={`text-lg leading-relaxed transition-colors duration-500 ${
+              activeCard === 'vision' ? 'text-orange-50' : 'text-slate-600'
+            }`}>
+              We aim to become the premier partner for digital transformation and managed services, shaping smarter enterprises for tomorrow through our commitment to innovation, quality, and rigorous security standards.
+            </p>
           </div>
+
         </div>
       </section>
 
@@ -115,8 +179,8 @@ export default function AboutPage() {
 
       {/* Process Highlights */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="sticky top-24">
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 leading-tight">
               Our Proven Working Process
             </h2>
@@ -125,23 +189,52 @@ export default function AboutPage() {
             </p>
           </div>
           
-          <div className="space-y-8">
-            {[
-              { title: 'Discover Needs', desc: 'We begin by understanding your buisness challenges and objectectives.' },
-              { title: 'Analyze & Stratergize', desc: 'Our experts analyse the requirements to crft a tailored stratergy.' },
-              { title: 'Implement Solutions', desc: 'We develop and deply solutions that align with your goals.' },
-              { title: 'Monitor & Optimize', desc: 'Post-deployment, we continuously monitor and refine for optimal performance.' }
-            ].map((item, i) => (
-              <div key={i} className="flex items-start">
-                <div className="flex-shrink-0 mt-1">
-                  <CheckCircle className="w-6 h-6 text-orange-500" />
-                </div>
-                <div className="ml-4">
-                  <h4 className="text-lg font-bold text-slate-900">{item.title}</h4>
-                  <p className="text-slate-500 mt-1">{item.desc}</p>
-                </div>
-              </div>
-            ))}
+          <div className="relative pb-10" ref={processRef}>
+            <div className="absolute left-[19px] top-2 bottom-0 w-[2px] bg-slate-200 rounded-full z-0">
+              <motion.div 
+                className="absolute left-0 top-0 w-full bg-orange-500 origin-top rounded-full"
+                style={{ height: lineHeight }}
+              />
+            </div>
+
+            <div className="space-y-12 relative z-10">
+              {PROCESS_STEPS.map((item, i) => {
+                const isLast = i === PROCESS_STEPS.length - 1;
+                const stepThreshold = i / (PROCESS_STEPS.length - 1);
+                
+                const iconColor = useTransform(
+                  scrollYProgress,
+                  [stepThreshold - 0.2, stepThreshold], 
+                  ["#cbd5e1", "#f97316"] 
+                );
+
+                return (
+                  <div key={i} className="relative pl-14 flex flex-col justify-center min-h-[40px]">
+                    
+                    {isLast && (
+                      <div className="absolute left-0 top-[38px] bottom-[-50px] w-12 bg-white" />
+                    )}
+
+                    <motion.div 
+                      className="absolute left-0 top-[-2px] w-10 h-10 bg-white rounded-full flex items-center justify-center z-10"
+                      style={{ color: iconColor }}
+                    >
+                      <CheckCircle className="w-8 h-8 bg-white rounded-full shadow-[0_0_0_4px_white]" />
+                    </motion.div>
+                    
+                    <motion.div 
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 0.5, delay: i * 0.1 }}
+                    >
+                      <h4 className="text-xl font-bold text-slate-900">{item.title}</h4>
+                      <p className="text-slate-500 mt-2 text-lg">{item.desc}</p>
+                    </motion.div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

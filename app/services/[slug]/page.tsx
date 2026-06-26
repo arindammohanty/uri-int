@@ -114,6 +114,57 @@ const SERVICE_DATA_STORE: Record<string, ServiceDetail> = {
       "Domain-Driven Design: Microservices architected around real business functions."
     ],
     industries: ["Fintech APIs", "Complex Mobility Networks", "SaaS Enterprise Panels", "High-Volume Retail Hubs"]
+  },
+  "data-and-analytics": {
+    title: "Data & Analytics",
+    tagline: "Intelligence Driving Action.",
+    intro: "Leverage big data ecosystems, predictive modeling, and intelligent dashboards to turn raw data into actionable enterprise insights.",
+    provisions: [
+      "Data Warehouse & Data Lake Design: Centralized, scalable storage for structured and unstructured data.",
+      "Business Intelligence & Dashboards: Custom reporting using PowerBI, Tableau, and Looker.",
+      "Predictive Analytics & Machine Learning: Forecasting trends and automating decisions with AI.",
+      "Data Governance & Quality Management: Ensuring data accuracy, lineage, and security."
+    ],
+    justifications: [
+      "Data-Driven Decisions: Transition from reactive monitoring to proactive forecasting.",
+      "Scalable Infrastructure: Solutions built to grow with your data volumes seamlessly.",
+      "Actionable Insights: Complex data synthesized into intuitive, user-friendly dashboards."
+    ],
+    industries: ["E-Commerce & Retail", "Healthcare", "Financial Services", "Supply Chain Logistics"]
+  },
+  "custom-software-engineering": {
+    title: "Custom Software Engineering",
+    tagline: "Bespoke Solutions. Flawless Execution.",
+    intro: "End-to-end bespoke application development utilizing microservices architectures, serverless computing, and modern front-end frameworks.",
+    provisions: [
+      "Full-Stack Web Development: Responsive, high-performance applications built on modern tech stacks.",
+      "Enterprise Mobility Solutions: Native and cross-platform mobile application development.",
+      "Legacy System Modernization: Refactoring and re-platforming outdated software to cloud-native architectures.",
+      "Product Prototyping & MVP: Rapid ideation and testing to accelerate market entry."
+    ],
+    justifications: [
+      "Tailored Functionality: Software explicitly mapped to your unique business processes.",
+      "Future-Proof Tech Stacks: Utilizing React, Node.js, Python, and scalable databases.",
+      "Rigorous Quality Assurance: Automated testing ensures low-defect, resilient software."
+    ],
+    industries: ["Software Startups", "Healthcare Providers", "Logistics", "Media & Entertainment"]
+  },
+  "governance-risk-and-compliance": {
+    title: "Governance, Risk & Compliance",
+    tagline: "Strict Compliance. Mitigated Risk.",
+    intro: "Implement robust frameworks to ensure rigorous regulatory compliance, manage enterprise security risks, and maintain strict data governance across all your digital assets.",
+    provisions: [
+      "Regulatory Compliance Frameworks: GDPR, HIPAA, SOC 2, and ISO 27001 readiness and implementation.",
+      "Enterprise Risk Management: Continuous risk identification, assessment, and mitigation protocols.",
+      "Data Privacy & Governance: Establishing strict data classification, access controls, and retention policies.",
+      "Policy Design & Auditing: Automated compliance monitoring and comprehensive IT policy enforcement."
+    ],
+    justifications: [
+      "Proactive Risk Posture: Anticipate and neutralize threats before they impact business continuity.",
+      "Audit Readiness: Streamline audits with automated reporting and centralized compliance tracking.",
+      "Brand Trust: Safeguard customer data and corporate reputation through verifiable security standards."
+    ],
+    industries: ["Financial Services", "Healthcare", "Government & Public Sector", "E-commerce"]
   }
 };
 
