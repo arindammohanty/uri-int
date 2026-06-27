@@ -4,6 +4,7 @@ import { supabase } from '@/lib/supabase';
 import React, { useState } from 'react';
 import { Eye, EyeOff, Loader2, Mail, Lock } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 type TabMode = 'Company' | 'Talent';
 
@@ -118,18 +119,17 @@ export default function CRNLoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-white font-sans text-slate-800 p-6 lg:p-12">
       <div className="w-full max-w-[1280px] mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
 
-        {/* Left Side: Branding & Testimonial */}
         <div className="w-full lg:w-1/2 space-y-8">
-          
-          {/* Logo Representation */}
-          <div className="w-[88px] h-[88px] bg-[#222222] rounded-2xl flex flex-col items-center justify-center text-white shadow-sm">
-            <div className="flex items-baseline text-4xl font-bold tracking-tighter">
-              UR<span className="text-[#FF6B4A]">I</span>
-            </div>
-            <div className="text-[0.45rem] tracking-[0.2em] uppercase mt-0.5 text-slate-300">
-              Technologies
-            </div>
-          </div>
+          <Link href="/" className="inline-block mb-2 bg-slate-900/90 p-3.5 rounded-2xl shadow-sm hover:bg-slate-900 transition-colors">
+            <Image 
+              src="/images/logo.png" 
+              alt="URI Technologies Logo" 
+              width={220} 
+              height={70} 
+              className="h-14 lg:h-16 w-auto" 
+              priority 
+            />
+          </Link>
 
           <h1 className="text-[3.5rem] lg:text-[4rem] font-bold tracking-tight text-[#2D333A] leading-[1.1]">
             Streamline your <br />
@@ -147,7 +147,6 @@ export default function CRNLoginPage() {
             </p>
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full overflow-hidden bg-slate-100 flex-shrink-0">
-                {/* Fallback avatar if the image doesn't load */}
                 <div className="w-full h-full bg-slate-200 flex items-center justify-center">
                    <span className="text-slate-500 font-bold">SS</span>
                 </div>
@@ -160,14 +159,12 @@ export default function CRNLoginPage() {
           </div>
         </div>
 
-        {/* Right Side: Auth Card */}
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
           <div className="w-full max-w-[460px] border border-slate-200 rounded-[2rem] p-8 sm:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] bg-white">
             
             <h2 className="text-3xl font-bold text-[#2D333A]">Welcome Back</h2>
             <p className="text-slate-500 mt-1.5 mb-8 font-medium">Sign in to your account</p>
 
-            {/* Pill Tab Switcher */}
             <div className="flex border border-slate-200 p-1 rounded-2xl mb-8">
               <button
                 type="button"

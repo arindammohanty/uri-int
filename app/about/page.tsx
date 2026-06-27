@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from 'react';
 import { 
-  Eye, Zap, Gem, Shield, Handshake, Users, CheckCircle
+  Eye, Zap, Gem, Shield, Handshake, Users, CheckCircle, Crosshair, Globe2, Lock, TrendingUp
 } from 'lucide-react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 
@@ -215,14 +215,60 @@ export default function AboutPage() {
             { icon: Handshake, title: 'Collaboration', desc: 'We act as an extension of your internal engineering teams, not just a service vendor.' },
             { icon: Users, title: 'Human-Centric', desc: 'Solutions designed with end-users in mind, balancing complex logic with intuitive UX.' }
           ].map((value, i) => (
-            <div key={i} className="p-8 border border-slate-200 rounded-3xl bg-white hover:border-orange-500 hover:shadow-lg transition-all group">
-              <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div key={i} className="p-8 border border-slate-200 rounded-[2rem] bg-white hover:border-orange-500 hover:shadow-xl transition-all group">
+              <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <value.icon className="w-6 h-6 text-orange-500" />
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">{value.title}</h3>
               <p className="text-slate-500 leading-relaxed">{value.desc}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* RE-THEMED: What Makes Us Different Section */}
+      <section className="py-24 bg-slate-50 border-y border-slate-100 my-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">What Makes Us Different</h2>
+            <p className="text-lg text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
+              We go beyond standard vendor relationships to become your strategic technology partner, integrating seamlessly with your enterprise goals.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white border border-slate-200 p-8 rounded-[2rem] hover:border-orange-500 hover:shadow-xl transition-all duration-300 group">
+              <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Crosshair className="w-6 h-6 text-orange-500" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-slate-900">Targeted Solutions</h3>
+              <p className="text-slate-500 text-sm leading-relaxed font-medium">We reject cookie-cutter approaches, engineering custom architectures that perfectly map to your distinct operational workflows.</p>
+            </div>
+            
+            <div className="bg-white border border-slate-200 p-8 rounded-[2rem] hover:border-orange-500 hover:shadow-xl transition-all duration-300 group">
+              <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Globe2 className="w-6 h-6 text-orange-500" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-slate-900">Borderless Talent</h3>
+              <p className="text-slate-500 text-sm leading-relaxed font-medium">Our robust recruitment networks provide unrestricted access to top-tier global professionals and emerging campus talent.</p>
+            </div>
+            
+            <div className="bg-white border border-slate-200 p-8 rounded-[2rem] hover:border-orange-500 hover:shadow-xl transition-all duration-300 group">
+              <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Lock className="w-6 h-6 text-orange-500" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-slate-900">Zero-Trust DNA</h3>
+              <p className="text-slate-500 text-sm leading-relaxed font-medium">Security is never an afterthought. We embed rigorous compliance and data protection protocols into the foundation of every project.</p>
+            </div>
+            
+            <div className="bg-white border border-slate-200 p-8 rounded-[2rem] hover:border-orange-500 hover:shadow-xl transition-all duration-300 group">
+              <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <TrendingUp className="w-6 h-6 text-orange-500" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-slate-900">Agile Scalability</h3>
+              <p className="text-slate-500 text-sm leading-relaxed font-medium">From initial cloud migrations to full-scale team augmentations, our frameworks are designed to rapidly scale alongside your business.</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -246,7 +292,6 @@ export default function AboutPage() {
             </div>
 
             <div className="space-y-12 relative z-10">
-              {/* 2. Map through the new extracted child component */}
               {PROCESS_STEPS.map((item, i) => (
                 <ProcessStep 
                   key={i} 

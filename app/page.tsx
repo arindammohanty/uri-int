@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const HERO_SLIDES = [
   {
     type: 'video',
-    src: 'https://assets.mixkit.co/videos/preview/mixkit-set-of-servers-in-a-data-center-31362-large.mp4', // Reliable mock tech video
+    src: 'https://www.youtube.com/shorts/mpOyYP4NZJE', 
     alt: 'URI Technologies Digital Infrastructure Video'
   },
   {
@@ -39,7 +39,16 @@ const INDUSTRIES = [
   { name: 'Telecommunications', desc: 'Low-latency networks, 5G infrastructure management, and OSS/BSS integrations.', icon: '/industries/it-software.svg' }
 ];
 
-const CLIENT_LOGOS = ["IBM", "Salesforce", "SAP", "Oracle", "Microsoft", "Amazon", "Cisco"];
+// Updated to use the actual image paths from public/Logos/
+const CLIENT_LOGOS = [
+  { src: "/Logos/ibm.svg", alt: "IBM" },
+  { src: "/Logos/salesforce-2.svg", alt: "Salesforce" },
+  { src: "/Logos/sap-3.svg", alt: "SAP" },
+  { src: "/Logos/oracle-6.svg", alt: "Oracle" },
+  { src: "/Logos/microsoft-6.svg", alt: "Microsoft" },
+  { src: "/Logos/logo-amazon.svg", alt: "Amazon" },
+  { src: "/Logos/cisco-2.svg", alt: "Cisco" }
+];
 
 export default function HomePage() {
   const [formData, setFormData] = useState({ name: '', email: '', company: '', requirement: '' });
@@ -64,7 +73,8 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[linear-gradient(to_bottom,#ffffff_0%,#ffffff_10%,#FF824D_45%,#FF824D_55%,#F8F9FA_90%,#F8F9FA_100%)] font-sans text-slate-900 pb-0 selection:bg-[#0B1120] selection:text-white overflow-hidden">
+    // Changed the #FF824D to a very subtle #FFF5F0 (Soft Peach/Orange)
+    <div className="min-h-screen bg-[linear-gradient(to_bottom,#ffffff_0%,#ffffff_10%,#FFF5F0_45%,#FFF5F0_55%,#F8F9FA_90%,#F8F9FA_100%)] font-sans text-slate-900 pb-0 selection:bg-[#0B1120] selection:text-white overflow-hidden">
       
       <section className="pt-16 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -164,7 +174,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-8 flex flex-col lg:flex-row items-center overflow-hidden relative border-y border-white/20 bg-white/10 backdrop-blur-md shadow-sm">
+      <section className="py-8 flex flex-col lg:flex-row items-center overflow-hidden relative border-y border-slate-200/50 bg-white/40 backdrop-blur-md shadow-sm">
         
         <div className="z-20 px-6 lg:px-12 mb-4 lg:mb-0 lg:border-r border-slate-900/10 flex-shrink-0 flex items-center">
           <span className="text-sm md:text-base font-bold text-slate-900 uppercase tracking-widest">
@@ -179,8 +189,15 @@ export default function HomePage() {
             transition={{ repeat: Infinity, ease: "linear", duration: 40 }}
           >
             {[...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS].map((logo, i) => (
-              <div key={i} className="flex-shrink-0 text-2xl md:text-xl font-extrabold text-slate-900/50 hover:text-slate-900/90 transition-colors cursor-default select-none tracking-tight">
-                {logo}
+              <div key={i} className="flex-shrink-0 w-24 md:w-32 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300 cursor-default select-none">
+                <Image 
+                  src={logo.src} 
+                  alt={logo.alt} 
+                  width={128} 
+                  height={48} 
+                  className="w-full h-auto max-h-12 object-contain" 
+                  unoptimized 
+                />
               </div>
             ))}
           </motion.div>
@@ -277,8 +294,8 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
             <div className="max-w-2xl">
-              <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight drop-shadow-md">Industries We Serve</h2>
-              <p className="text-white/90 text-lg font-medium drop-shadow-sm">Delivering specialized digital transformations across core global sectors tailored to extreme operational demands.</p>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-black mb-4 tracking-tight drop-shadow-md">Industries We Serve</h2>
+              <p className="text-black/90 text-lg font-medium drop-shadow-sm">Delivering specialized digital transformations across core global sectors tailored to extreme operational demands.</p>
             </div>
             <Link href="/services" className="hidden md:inline-flex items-center text-slate-900 font-extrabold hover:text-white transition-colors pb-1 drop-shadow-sm">
               View All Services <ArrowRight className="ml-2 w-5 h-5" />
