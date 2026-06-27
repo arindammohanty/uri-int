@@ -18,7 +18,7 @@ const OFFICE_LOCATIONS = [
   },
   {
     id: 'hub1',
-    title: 'Business Hub 1 (India)',
+    title: 'Business Hub (India)',
     content: (
       <>
         1-60/30, Gachibowli - Miyapur Rd,<br />
@@ -29,7 +29,7 @@ const OFFICE_LOCATIONS = [
   },
   {
     id: 'hub2',
-    title: 'Business Hub 2 (Global)',
+    title: 'Business Hub (Global)',
     content: (
       <>
         A-10-11, Brickfields,<br />
