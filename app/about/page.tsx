@@ -96,9 +96,17 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           <div className="grid grid-cols-2 gap-4 h-[400px] md:h-[500px]">
-            <div className="bg-slate-100 rounded-3xl h-full w-full object-cover"></div>
+            <img 
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" 
+              alt="Team Collaboration" 
+              className="bg-slate-100 rounded-3xl h-full w-full object-cover" 
+            />
             <div className="grid grid-rows-2 gap-4 h-full">
-              <div className="bg-slate-100 rounded-3xl h-full w-full object-cover"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" 
+                alt="Global Digital Technology" 
+                className="bg-slate-100 rounded-3xl h-full w-full object-cover" 
+              />
               <div className="bg-orange-500 rounded-3xl h-full w-full flex items-center justify-center p-6 text-center text-white font-bold shadow-lg shadow-orange-500/20">
                 Est. 2013 - Bhubaneswar, India
               </div>

@@ -1,10 +1,28 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Star, CheckCircle, ArrowRight, HelpCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const HERO_SLIDES = [
+  {
+    type: 'video',
+    src: 'https://assets.mixkit.co/videos/preview/mixkit-set-of-servers-in-a-data-center-31362-large.mp4', // Reliable mock tech video
+    alt: 'URI Technologies Digital Infrastructure Video'
+  },
+  {
+    type: 'image',
+    src: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200',
+    alt: 'Global Enterprise Connectivity'
+  },
+  {
+    type: 'image',
+    src: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200',
+    alt: 'Cyber Security Operations'
+  }
+];
 
 const MOCK_TESTIMONIALS = [
   { id: 1, name: "David R.", role: "CTO at FinTech Solutions", image: "https://ui-avatars.com/api/?name=David+R&background=FF824D&color=fff", content: "URI Technologies fundamentally transformed our monolithic architecture. Their API & Microservices solutions drastically reduced our deployment times and increased system resilience." },
@@ -27,7 +45,17 @@ export default function HomePage() {
   const [formData, setFormData] = useState({ name: '', email: '', company: '', requirement: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [activeCard, setActiveCard] = useState<'mission' | 'vision'>('mission');
+  const [currentSlide, setCurrentSlide] = useState(0);
   
+  // Auto-play functionality for the Hero Carousel
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 6000); // Transitions every 6 seconds
+    
+    return () => clearInterval(timer);
+  }, []);
+
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitted(true);
@@ -84,14 +112,54 @@ export default function HomePage() {
             </div>
           </div>
           
-          <div className="order-1 lg:order-2 w-full flex justify-end relative h-[400px] lg:h-[600px]">
-            <Image 
-              src="/images/hero-image.jpg" 
-              alt="Digital Infrastructure" 
-              fill
-              className="rounded-[2rem] shadow-2xl object-cover"
-              priority
-            />
+          {/* Dynamic Hero Carousel */}
+          <div className="order-1 lg:order-2 w-full flex justify-end relative h-[400px] lg:h-[600px] rounded-[2rem] overflow-hidden shadow-2xl bg-slate-900 group">
+            <AnimatePresence mode="popLayout">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+                className="absolute inset-0"
+              >
+                {HERO_SLIDES[currentSlide].type === 'video' ? (
+                  <video 
+                    src={HERO_SLIDES[currentSlide].src}
+                    autoPlay 
+                    muted 
+                    loop 
+                    playsInline 
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <Image 
+                    src={HERO_SLIDES[currentSlide].src} 
+                    alt={HERO_SLIDES[currentSlide].alt} 
+                    fill
+                    className="object-cover"
+                    priority={currentSlide === 0}
+                    unoptimized
+                  />
+                )}
+                {/* Overlay to ensure slide consistency */}
+                <div className="absolute inset-0 bg-slate-900/10 mix-blend-overlay"></div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Carousel Navigation Dots */}
+            <div className="absolute bottom-6 left-0 right-0 flex justify-center space-x-3 z-20">
+              {HERO_SLIDES.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                    idx === currentSlide ? 'bg-white scale-125 shadow-sm' : 'bg-white/50 hover:bg-white/80'
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

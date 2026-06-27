@@ -15,156 +15,107 @@ interface ServiceDetail {
 }
 
 const SERVICE_DATA_STORE: Record<string, ServiceDetail> = {
-  "it-consultant-and-advisory": {
-    title: "IT Consultant & Advisory",
-    tagline: "Expert Guidance, Real Results.",
-    intro: "Strategic IT consulting services to align your technology ecosystem with business objectives, delivering measurable outcomes through transformation planning, audits, and modernization strategies.",
+  "it-staff-augmentation": {
+    title: "IT Staff Augmentation",
+    tagline: "Scale Your Team, On Demand.",
+    intro: "Bridge skill gaps and accelerate project delivery with our IT Staff Augmentation services. We provide highly qualified tech professionals ready to integrate seamlessly into your existing teams without the overhead of permanent hiring.",
     provisions: [
-      "Technology Strategy & Roadmap Development: Designing high-performance long-term IT blueprints.",
-      "IT Assessments & Audits: Evaluating systems, infrastructure, and workflows to identify risks and inefficiencies.",
-      "Digital Transformation Consulting: Guiding businesses through cloud adoption and data architecture redesign.",
-      "Enterprise Architecture & Governance: Implementing scalable architecture frameworks ensuring secure governance."
+      "Flexible Scaling: Quickly ramp up or down based on fluctuating project demands.",
+      "Access to Niche Skills: Source specialized talent in Cloud, AI, Cybersecurity, and Software Engineering.",
+      "Seamless Integration: Candidates are pre-vetted for both technical proficiency and cultural fit.",
+      "Reduced Overhead: Avoid the long-term administrative and financial burdens of full-time employment."
     ],
     justifications: [
-      "Business-Aligned Expertise: Tangible ROI by aligning tech decisions with core business priorities.",
-      "360° View: Evaluating people, processes, and technology for complete strategic clarity.",
-      "Flexible Engagement Models: Project-based, retainer, or on-demand advisory models."
+      "Speed to Market: Fill critical tech roles in days, not months, to keep projects on track.",
+      "Cost Efficiency: Pay only for the specialized talent and hours you actually need.",
+      "Risk Mitigation: Evaluate professional performance on a contract basis before committing long-term."
     ],
-    industries: ["Financial Services & Banking", "Healthcare & Pharmaceuticals", "Manufacturing & Supply Chain", "Public Sector"]
+    industries: ["Information Technology", "Financial Services & Fintech", "Healthcare Tech", "E-commerce"]
   },
-  "agile-it-operations": {
-    title: "Agile IT Operations",
-    tagline: "Reliable Tech, Always On.",
-    intro: "In fast-paced digital environments, operational engineering must remain resilient. Our services empower businesses to operate without disruption through comprehensive monitoring and maintenance.",
+  "campus-hiring-solutions": {
+    title: "Campus Hiring Solutions",
+    tagline: "Building Your Future Workforce.",
+    intro: "Discover and secure top emerging talent directly from premier educational institutions. Our end-to-end campus hiring solutions streamline the graduate recruitment process, ensuring you build a pipeline of future leaders.",
     provisions: [
-      "IT Infrastructure Management: From servers to devices, we manage and monitor your IT landscape.",
-      "Helpdesk & End-User Support: Round-the-clock IT support for troubleshooting and ticket resolution.",
-      "Software Development & Maintenance: Building secure software tailored to business goals."
+      "Targeted Campus Drives: Facilitating direct access to top engineering and management institutes.",
+      "Comprehensive Assessments: Administering tailored technical, cognitive, and aptitude testing.",
+      "Brand Building: Enhancing your employer brand presence among emerging young professionals.",
+      "Onboarding Support: Ensuring a smooth logistical transition from campus to corporate environments."
     ],
     justifications: [
-      "24/7 Monitoring & Response: Always-on support to resolve issues proactively.",
-      "Security First: Following best practices to protect your data and reputation.",
-      "Tailored Solutions: Customized infrastructure, security, and scalability requirements."
+      "High Volume, High Quality: Efficiently processing thousands of candidates to find the top percentile.",
+      "Future Leaders: Injecting fresh perspectives and modern technical training directly into your teams.",
+      "Reduced Time-to-Hire: Taking the burden of logistical and event management off your internal HR."
     ],
-    industries: ["Information Technology", "BFSI", "Manufacturing", "Retail & E-commerce"]
+    industries: ["IT Services", "Business Consulting", "Manufacturing", "Telecommunications"]
   },
-  "cloud-platform-services": {
-    title: "Cloud Platform Services",
-    tagline: "Scalable, Secure, and Future-Ready.",
-    intro: "The cloud is the foundation of agile enterprises. We empower businesses to innovate through cloud-native application development, secure migrations, and multi-cloud environments.",
+  "leadership-hiring": {
+    title: "Leadership Hiring",
+    tagline: "Securing Visionary Talent.",
+    intro: "Our executive search practice focuses on identifying, evaluating, and securing transformative C-level and senior leadership talent that aligns perfectly with your strategic vision and corporate culture.",
     provisions: [
-      "Cloud-Native Application Development: Microservices, containers, and serverless computing.",
-      "Cloud Migration & Modernization: Moving legacy systems efficiently with maximum ROI.",
-      "Infrastructure as Code (IaC): Automating infrastructure via Terraform and AWS CloudFormation."
+      "Executive Search & Selection: Retained search execution for C-Suite, VP, and Director-level roles.",
+      "Market Mapping & Intelligence: Delivering deep insights into competitor talent landscapes.",
+      "Rigorous Assessment: Multi-stage evaluations focusing on leadership capability and strategic foresight.",
+      "Confidential Engagement: Discreetly approaching passive, high-impact candidates on your behalf."
     ],
     justifications: [
-      "Cloud-First Expertise: Deep experience across AWS, Azure, and Google Cloud.",
-      "Security-Driven: Data integrity and protection are at the core of deployments.",
-      "Agile Methodology: Rapid development and iterative continuous improvement."
+      "Strategic Impact: Securing leaders who drive measurable organizational growth and stability.",
+      "Reduced Hiring Risk: Highly structured validation processes ensure executive reliability.",
+      "Extensive Network: Leveraging our exclusive connections to top-tier, passive executives."
     ],
-    industries: ["Technology & SaaS", "Finance & Fintech", "Healthcare & Pharma", "Education"]
+    industries: ["Banking & Finance", "Healthcare & Life Sciences", "Technology & SaaS", "Retail Enterprise"]
   },
-  "cyber-security-platform-services": {
-    title: "Cyber Security Platform Services",
-    tagline: "Secure Today, Safeguard Tomorrow.",
-    intro: "From digital risk management to advanced threat defense, we deliver strategic advisory, platform implementation, and managed security operations (SOC) against evolving cyber threats.",
+  "permanent-recruitment": {
+    title: "Permanent Recruitment",
+    tagline: "Your Core Team, Solidified.",
+    intro: "Build a stable, high-performing workforce with our permanent recruitment services. We handle the entire lifecycle of talent acquisition to find candidates who are in it for the long haul.",
     provisions: [
-      "Security Strategy & Advisory: CISO advisory, risk assessments, and compliance planning.",
-      "Cloud & Infrastructure Security: Multi-layered defense mechanisms across cloud, IoT, and endpoints.",
-      "Threat & Vulnerability Management: SAST, DAST, VAPT, and red teaming simulations.",
-      "Security Operations & MDR: Establish 24/7 SOC powered by threat intelligence and SOAR."
+      "End-to-End Recruitment Lifecycle: Managing everything from job profiling to final offer negotiation.",
+      "Advanced Sourcing Strategies: Utilizing AI-driven matching and our extensive proprietary talent databases.",
+      "Cultural Fit Alignment: Deep behavioral screening to ensure candidates match your corporate ethos.",
+      "Market Salary Benchmarking: Providing competitive compensation advisory to secure top choices."
     ],
     justifications: [
-      "Risk-Driven Methodology: Structuring defenses to counter high-probability attacks.",
-      "Cloud-First, Enterprise-Ready: Native cloud integrations.",
-      "Full-Spectrum Expertise: End-to-end coverage."
+      "Quality of Hire: Rigorous vetting processes ensure long-term employee retention.",
+      "Time Savings: Freeing up your internal HR resources to focus on strategic initiatives.",
+      "Guaranteed Replacements: Risk-free hiring backed by our standard replacement clauses."
     ],
-    industries: ["Banking Frameworks", "Industrial IoT", "Telecommunications", "Public Sector Services"]
+    industries: ["Engineering & IT", "FMCG", "Product Development", "Logistics & Supply Chain"]
   },
-  "devops-and-agile-transformation": {
-    title: "DevOps & Agile Transformation",
-    tagline: "Speed Meets Stability.",
-    intro: "We help organizations accelerate software delivery and enhance reliability by integrating DevOps best practices with Agile frameworks, fostering automation across the lifecycle.",
+  "hire-train-deploy": {
+    title: "Hire, Train & Deploy",
+    tagline: "Custom-Trained For Your Needs.",
+    intro: "Address specific skill shortages with our customized Hire, Train & Deploy model. We recruit promising talent, upskill them on your exact tech stack, and deploy them ready to deliver from day one.",
     provisions: [
-      "CI/CD Pipeline Implementation: Streamline releases with continuous integration/delivery.",
-      "Infrastructure Automation: Ansible, Jenkins, Docker, and Kubernetes deployment.",
-      "Agile Coaching & Framework Design: Scrum, SAFe, Kanban implementations.",
-      "DevSecOps Integration: Embed security into the pipeline to detect vulnerabilities early."
+      "Custom Curriculum Design: Training modules built specifically around your proprietary systems and needs.",
+      "Talent Sourcing & Screening: Identifying baseline candidates possessing high learning agility.",
+      "Intensive Bootcamp Training: Hands-on, practical skill development led by industry experts.",
+      "Day-One Productivity: Deploying candidates who arrive fully productive and domain-aware."
     ],
     justifications: [
-      "Toolchain Expertise: GitLab, Azure DevOps, Bitbucket, Jenkins, Terraform.",
-      "Faster Time-to-Market: Deliver features reliably without compromising compliance.",
-      "Culture-Driven Change: Building a collaborative culture of ownership and feedback."
+      "Zero Skill Gap: Ensuring an exact match for your niche and emerging technology requirements.",
+      "Lower Attrition: Candidates invested in through dedicated training consistently show higher loyalty.",
+      "Cost-Effective Scaling: Predictable, optimized costs for building customized talent pipelines."
     ],
-    industries: ["Software & SaaS", "Financial Services", "Telecommunications", "EdTech"]
+    industries: ["Global Capability Centers (GCCs)", "IT Consulting", "Automotive Technology", "Fintech"]
   },
-  "api-and-microservices-architecture": {
-    title: "API & Microservices Architecture",
-    tagline: "Smarter Architecture, Agile Growth.",
-    intro: "Monolithic systems slow innovation. We modernize architecture with flexible, scalable API and microservices solutions, unlocking agility, reusability, and speed.",
+  "borderless-talent-solutions": {
+    title: "Borderless Talent Solutions",
+    tagline: "Global Talent, Zero Boundaries.",
+    intro: "Expand your search beyond geographical limits. Our Borderless Talent Solutions help you build diverse, remote teams by tapping into the best global talent pools seamlessly and compliantly.",
     provisions: [
-      "Microservices Architecture Design: Break down legacy applications into loosely coupled services.",
-      "API Development & Integration: Robust RESTful and GraphQL API constructions.",
-      "Service Mesh & Orchestration: Managing communication and security via Istio and Kubernetes.",
-      "Event-Driven Architecture: Asynchronous communication using Kafka and RabbitMQ."
+      "Global Talent Sourcing: Accessing top-tier candidates across international and emerging markets.",
+      "Employer of Record (EoR) Services: Enabling compliant hiring without setting up local legal entities.",
+      "Remote Workforce Management: Providing infrastructure support for seamless remote team integration.",
+      "Cross-Border Payroll & Compliance: Navigating complex international labor laws and tax regulations."
     ],
     justifications: [
-      "Modular Scalability: Scale components independently based on load needs.",
-      "Secure & Compliant APIs: Built-in OAuth2, rate limiting, and logging policies.",
-      "Domain-Driven Design: Microservices architected around real business functions."
+      "Access to the Best: Refusing to settle for local limits when the optimal talent resides overseas.",
+      "Cost Arbitrage: Leveraging geo-economic advantages for highly optimized workforce operational costs.",
+      "Risk-Free Expansion: Full legal, payroll, and administrative compliance handled entirely by our experts."
     ],
-    industries: ["Fintech APIs", "Complex Mobility Networks", "SaaS Enterprise Panels", "High-Volume Retail Hubs"]
-  },
-  "data-and-analytics": {
-    title: "Data & Analytics",
-    tagline: "Intelligence Driving Action.",
-    intro: "Leverage big data ecosystems, predictive modeling, and intelligent dashboards to turn raw data into actionable enterprise insights.",
-    provisions: [
-      "Data Warehouse & Data Lake Design: Centralized, scalable storage for structured and unstructured data.",
-      "Business Intelligence & Dashboards: Custom reporting using PowerBI, Tableau, and Looker.",
-      "Predictive Analytics & Machine Learning: Forecasting trends and automating decisions with AI.",
-      "Data Governance & Quality Management: Ensuring data accuracy, lineage, and security."
-    ],
-    justifications: [
-      "Data-Driven Decisions: Transition from reactive monitoring to proactive forecasting.",
-      "Scalable Infrastructure: Solutions built to grow with your data volumes seamlessly.",
-      "Actionable Insights: Complex data synthesized into intuitive, user-friendly dashboards."
-    ],
-    industries: ["E-Commerce & Retail", "Healthcare", "Financial Services", "Supply Chain Logistics"]
-  },
-  "custom-software-engineering": {
-    title: "Custom Software Engineering",
-    tagline: "Bespoke Solutions. Flawless Execution.",
-    intro: "End-to-end bespoke application development utilizing microservices architectures, serverless computing, and modern front-end frameworks.",
-    provisions: [
-      "Full-Stack Web Development: Responsive, high-performance applications built on modern tech stacks.",
-      "Enterprise Mobility Solutions: Native and cross-platform mobile application development.",
-      "Legacy System Modernization: Refactoring and re-platforming outdated software to cloud-native architectures.",
-      "Product Prototyping & MVP: Rapid ideation and testing to accelerate market entry."
-    ],
-    justifications: [
-      "Tailored Functionality: Software explicitly mapped to your unique business processes.",
-      "Future-Proof Tech Stacks: Utilizing React, Node.js, Python, and scalable databases.",
-      "Rigorous Quality Assurance: Automated testing ensures low-defect, resilient software."
-    ],
-    industries: ["Software Startups", "Healthcare Providers", "Logistics", "Media & Entertainment"]
-  },
-  "governance-risk-and-compliance": {
-    title: "Governance, Risk & Compliance",
-    tagline: "Strict Compliance. Mitigated Risk.",
-    intro: "Implement robust frameworks to ensure rigorous regulatory compliance, manage enterprise security risks, and maintain strict data governance across all your digital assets.",
-    provisions: [
-      "Regulatory Compliance Frameworks: GDPR, HIPAA, SOC 2, and ISO 27001 readiness and implementation.",
-      "Enterprise Risk Management: Continuous risk identification, assessment, and mitigation protocols.",
-      "Data Privacy & Governance: Establishing strict data classification, access controls, and retention policies.",
-      "Policy Design & Auditing: Automated compliance monitoring and comprehensive IT policy enforcement."
-    ],
-    justifications: [
-      "Proactive Risk Posture: Anticipate and neutralize threats before they impact business continuity.",
-      "Audit Readiness: Streamline audits with automated reporting and centralized compliance tracking.",
-      "Brand Trust: Safeguard customer data and corporate reputation through verifiable security standards."
-    ],
-    industries: ["Financial Services", "Healthcare", "Government & Public Sector", "E-commerce"]
+    industries: ["Technology Startups", "Global E-commerce", "Digital Agencies", "Multinational Corporations"]
   }
 };
 
@@ -242,7 +193,7 @@ export default function ServiceSubPage() {
             <div className="bg-orange-500 p-8 rounded-[2rem] text-white shadow-xl shadow-orange-500/10">
               <h3 className="text-xl font-bold mb-3">Initiate Integration</h3>
               <p className="text-orange-50 text-sm font-medium leading-relaxed mb-6">
-                Connect with our systems architects to evaluate infrastructure requirements and coordinate transformation steps.
+                Connect with our recruitment experts to evaluate hiring requirements and coordinate staffing steps.
               </p>
               <div className="space-y-3 text-sm font-bold">
                 <div className="flex items-center text-orange-50"><Mail className="w-4 h-4 mr-2" /> info@uritechnologies.com</div>
