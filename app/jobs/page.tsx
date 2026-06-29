@@ -357,7 +357,7 @@ export default function JobsPage() {
                       </Link>
                       {/* Apply Now routing directly to CRN login */}
                       <Link 
-                        href="/crn" 
+                        href="/crn?tab=Talent" 
                         className="flex-1 bg-orange-500 text-center text-white py-2 rounded-lg text-sm font-semibold hover:bg-orange-600 transition-colors shadow-sm inline-block"
                       >
                         Apply Now

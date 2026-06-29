@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const HERO_SLIDES = [
   {
     type: 'video',
-    src: 'https://www.youtube.com/shorts/mpOyYP4NZJE', 
+    src: 'https://www.youtube.com/watch?v=paiSoYQhaBE&pp=ygUWYWVzdGhldGljIGZpcmUgYnVybmluZw%3D%3D', 
     alt: 'URI Technologies Digital Infrastructure Video'
   },
   {
@@ -36,7 +36,7 @@ const INDUSTRIES = [
   { name: 'Finance & Banking', desc: 'Secure, compliant, and high-frequency transactional processing systems.', icon: '/industries/finance.svg' },
   { name: 'Retail & E-Commerce', desc: 'High-availability platforms, unified customer experiences, and load balancing.', icon: '/industries/retail.svg' },
   { name: 'Healthcare & Pharma', desc: 'HIPAA-compliant data pipelines, telehealth solutions, and secure portals.', icon: '/industries/healthcare.svg' },
-  { name: 'Telecommunications', desc: 'Low-latency networks, 5G infrastructure management, and OSS/BSS integrations.', icon: '/industries/it-software.svg' }
+  { name: 'Telecommunications', desc: 'Low-latency networks, 5G infrastructure management, and OSS/BSS integrations.', icon: '/industries/telecommunications.png' }
 ];
 
 // Updated to use the actual image paths from public/Logos/
@@ -156,20 +156,6 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-slate-900/10 mix-blend-overlay"></div>
               </motion.div>
             </AnimatePresence>
-
-            {/* Carousel Navigation Dots */}
-            <div className="absolute bottom-6 left-0 right-0 flex justify-center space-x-3 z-20">
-              {HERO_SLIDES.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentSlide(idx)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                    idx === currentSlide ? 'bg-white scale-125 shadow-sm' : 'bg-white/50 hover:bg-white/80'
-                  }`}
-                  aria-label={`Go to slide ${idx + 1}`}
-                />
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -313,13 +299,13 @@ export default function HomePage() {
                   initial={{ opacity: 0, x: xOrigin }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, type: "spring", bounce: 0.2 }}
+                  transition={{ duration: 1.6, type: "spring", bounce: 0.3 }}
                   className="relative bg-[#0B1120]/95 backdrop-blur-2xl p-8 md:p-10 rounded-[2rem] border border-white/10 flex flex-col items-start hover:-translate-y-1 shadow-2xl transition-all cursor-pointer group overflow-hidden"
                 >
                   <div className="relative mb-8 inline-flex items-center justify-center">
                     <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 blur-xl rounded-full transition-opacity duration-500 pointer-events-none scale-[2.0]"></div>
                     <div className="w-16 h-16 flex items-center justify-center bg-slate-800 border border-slate-700 rounded-2xl text-white group-hover:bg-white group-hover:border-white transition-all duration-300 shadow-md relative z-10">
-                      <Image src={ind.icon} alt={ind.name} width={32} height={32} unoptimized className="w-8 h-8 object-contain invert brightness-0 group-hover:invert-0 group-hover:brightness-100 transition-all duration-300" onError={(e) => { e.currentTarget.style.display='none'; }} />
+                      <Image src={ind.icon} alt={ind.name} width={32} height={32} unoptimized className="w-8 h-8 object-contain group-hover:invert-0 group-hover:brightness-100 transition-all duration-300" onError={(e) => { e.currentTarget.style.display='none'; }} />
                     </div>
                   </div>
                   

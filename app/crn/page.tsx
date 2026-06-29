@@ -1,7 +1,7 @@
 'use client';
 
 import { supabase } from '@/lib/supabase';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Eye, EyeOff, Loader2, Mail, Lock } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -16,6 +16,16 @@ export default function CRNLoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+
+  // Check URL parameters on mount to set the active tab
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('tab') === 'Talent') {
+        setActiveTab('Talent');
+      }
+    }
+  }, []);
 
   const publicDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com'];
 
@@ -120,7 +130,7 @@ export default function CRNLoginPage() {
       <div className="w-full max-w-[1280px] mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
 
         <div className="w-full lg:w-1/2 space-y-8">
-          <Link href="/" className="inline-block mb-2 bg-slate-900/90 p-3.5 rounded-2xl shadow-sm hover:bg-slate-900 transition-colors">
+          <Link href="/" className="inline-block mb-2 transition-colors">
             <Image 
               src="/images/logo.png" 
               alt="URI Technologies Logo" 
@@ -142,7 +152,7 @@ export default function CRNLoginPage() {
           </p>
 
           <div className="border border-slate-200 rounded-[2rem] p-8 max-w-xl relative mt-12 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
-            <p className="text-[#A0A4A8] leading-relaxed mb-8 font-medium">
+            <p className="text-[#A0A4A8] leading-relaxed mb-8 font-bold italic text-lg">
               From the initial conversations all the way through to the project&apos;s successful conclusion, URI Technologies has delivered consistently. Their unique strategy have resulted in a discernible rise in our customers&apos; trust and happiness. URI Technologies is a great option if you wish to evolve your company&apos;s digital strategy.
             </p>
             <div className="flex items-center gap-4">

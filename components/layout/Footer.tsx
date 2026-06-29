@@ -49,12 +49,12 @@ export default function Footer() {
         {/* Main Footer Section */}
         <div className="bg-white border border-slate-200 rounded-[2rem] p-8 md:p-10 shadow-sm">
           
-          {/* 3-Column Grid Layout with increased spacing */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 lg:gap-x-20 gap-y-12 w-full items-start">
+          {/* 5-Column Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-x-6 lg:gap-x-8 gap-y-12 w-full items-start">
             
             {/* Column 1: Logo, Contact Us, Company */}
             <div className="flex flex-col">
-              <Link href="/" className="inline-flex items-center bg-slate-900/95 p-4 rounded-2xl hover:bg-slate-900 transition-colors shadow-sm mb-8 w-fit">
+              <Link href="/" className="inline-flex items-center hover:bg-slate-900 transition-colors mb-8 w-fit">
                 <Image 
                   src="/images/logo.png" 
                   alt="URI Technologies Logo" 
@@ -67,14 +67,14 @@ export default function Footer() {
               <div className="mb-10">
                 <h3 className="font-bold text-slate-900 mb-5 text-[15px] md:text-base">Contact us</h3>
                 <div className="space-y-3 text-slate-500 text-sm font-medium leading-relaxed">
-                  <p>Phone: +91 674 6066050</p>
+                  <p>Phone: +91 6746066050</p>
                   <p>Email: sales@uritechnologies.com</p>
                 </div>
               </div>
 
               <div>
                 <h3 className="font-bold text-slate-900 mb-5 text-[15px] md:text-base">Company</h3>
-                <ul className="space-y-3 text-slate-500 text-sm font-medium">
+                <ul className="space-y-2 text-slate-500 text-sm font-medium">
                   <li><Link href="/about" className="hover:text-[#FF6B35] transition-colors">About Us</Link></li>
                   <li><Link href="/managed-services" className="hover:text-[#FF6B35] transition-colors">Managed Services</Link></li>
                   <li><Link href="/services" className="hover:text-[#FF6B35] transition-colors">All Services</Link></li>
@@ -83,36 +83,44 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Column 2: Core Services, Managed Services */}
-            <div className="flex flex-col pt-2 lg:pt-0">
-              <div className="mb-10">
-                <h3 className="font-bold text-slate-900 mb-5 text-[15px] md:text-base">Core Services</h3>
-                <ul className="space-y-3 text-slate-500 text-sm font-medium">
-                  <li><Link href="/services/it-staff-augmentation" className="hover:text-[#FF6B35] transition-colors">IT Staff Augmentation</Link></li>
-                  <li><Link href="/services/campus-hiring-solutions" className="hover:text-[#FF6B35] transition-colors">Campus Hiring Solutions</Link></li>
-                  <li><Link href="/services/leadership-hiring" className="hover:text-[#FF6B35] transition-colors">Leadership Hiring</Link></li>
-                  <li><Link href="/services/permanent-recruitment" className="hover:text-[#FF6B35] transition-colors">Permanent Recruitment</Link></li>
-                  <li><Link href="/services/hire-train-deploy" className="hover:text-[#FF6B35] transition-colors">Hire, Train & Deploy</Link></li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="font-bold text-slate-900 mb-5 text-[15px] md:text-base">Managed Services</h3>
-                <ul className="space-y-3 text-slate-500 text-sm font-medium">
-                  <li><Link href="/managed-services/application-management-maintenance" className="hover:text-[#FF6B35] transition-colors">App Management & Maintenance</Link></li>
-                  <li><Link href="/managed-services/data-centre-services" className="hover:text-[#FF6B35] transition-colors">Data Centre Services</Link></li>
-                  <li><Link href="/managed-services/telecom-applications" className="hover:text-[#FF6B35] transition-colors">Telecom Applications</Link></li>
-                  <li><Link href="/managed-services/network-security" className="hover:text-[#FF6B35] transition-colors">Network Security</Link></li>
-                  <li><Link href="/managed-services/end-user-support-services" className="hover:text-[#FF6B35] transition-colors">End User Support Services</Link></li>
-                </ul>
+            {/* Column 2: Services (Spans 2 columns, arranges Core and Managed horizontally) */}
+            <div className="flex flex-col pt-2 lg:pt-0 md:col-span-2 lg:col-span-2">
+              <h3 className="font-bold text-slate-900 mb-5 text-[15px] md:text-base">Services</h3>
+              
+              <div className="flex flex-col sm:flex-row gap-8 lg:gap-10">
+                {/* Core Services */}
+                <div className="flex-1">
+                  <h4 className="text-sm font-bold text-slate-800 mb-3 border-b border-slate-100 pb-2">Core Services</h4>
+                  <ul className="space-y-3 text-slate-500 text-sm font-medium">
+                    <li><Link href="/services/it-staff-augmentation" className="hover:text-[#FF6B35] transition-colors">IT Staff Augmentation</Link></li>
+                    <li><Link href="/services/campus-hiring-solutions" className="hover:text-[#FF6B35] transition-colors">Campus Hiring Solutions</Link></li>
+                    <li><Link href="/services/leadership-hiring" className="hover:text-[#FF6B35] transition-colors">Leadership Hiring</Link></li>
+                    <li><Link href="/services/permanent-recruitment" className="hover:text-[#FF6B35] transition-colors">Permanent Recruitment</Link></li>
+                    <li><Link href="/services/hire-train-deploy" className="hover:text-[#FF6B35] transition-colors">Hire, Train & Deploy</Link></li>
+                  </ul>
+                </div>
+                
+                {/* Managed Services */}
+                <div className="flex-1">
+                  <h4 className="text-sm font-bold text-slate-800 mb-3 border-b border-slate-100 pb-2">Managed Services</h4>
+                  <ul className="space-y-3 text-slate-500 text-sm font-medium">
+                    <li><Link href="/managed-services/application-management-maintenance" className="hover:text-[#FF6B35] transition-colors">App Management & Maintenance</Link></li>
+                    <li><Link href="/managed-services/data-centre-services" className="hover:text-[#FF6B35] transition-colors">Data Centre Services</Link></li>
+                    <li><Link href="/managed-services/telecom-applications" className="hover:text-[#FF6B35] transition-colors">Telecom Applications</Link></li>
+                    <li><Link href="/managed-services/network-security" className="hover:text-[#FF6B35] transition-colors">Network Security</Link></li>
+                    <li><Link href="/managed-services/end-user-support-services" className="hover:text-[#FF6B35] transition-colors">End User Support Services</Link></li>
+                  </ul>
+                </div>
               </div>
             </div>
 
-            {/* Column 3: Reach Us */}
-            <div className="flex flex-col pt-2 lg:pt-0">
+            {/* Column 3: Reach Us (Spans 2 columns to fit both offices horizontally) */}
+            <div className="flex flex-col pt-2 lg:pt-0 md:col-span-2 lg:col-span-2">
               <h3 className="font-bold text-slate-900 mb-5 text-[15px] md:text-base">Reach Us</h3>
-              <div className="space-y-8">
-                <div>
+              
+              <div className="flex flex-col sm:flex-row gap-8 lg:gap-10">
+                {/* India Office */}
+                <div className="flex-1">
                   <h4 className="text-sm font-bold text-slate-800 mb-3 border-b border-slate-100 pb-2">India Office</h4>
                   <ul className="space-y-4 text-sm text-slate-500 font-medium">
                     <li className="flex items-start">
@@ -132,7 +140,9 @@ export default function Footer() {
                     </li>
                   </ul>
                 </div>
-                <div>
+                
+                {/* Global Office */}
+                <div className="flex-1">
                   <h4 className="text-sm font-bold text-slate-800 mb-3 border-b border-slate-100 pb-2">Global Office</h4>
                   <ul className="space-y-4 text-sm text-slate-500 font-medium">
                     <li className="flex items-start">

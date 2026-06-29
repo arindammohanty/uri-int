@@ -92,17 +92,17 @@ const COUNTRY_CODES = [
 const OFFICE_LOCATIONS = [
   {
     id: 'india',
-    name: 'India Office',
+    name: 'India Office (Bhubaneshwar)',
     address: 'B-36, 2nd Floor, Rupali Street Sahid Nagar , Bhubaneswar - 751007'
   },
   {
     id: 'hub1',
-    name: 'Business Hub - 1',
+    name: 'India Office (Hyderabad)',
     address: '1-60/30, Gachibowli - Miyapur Rd, Jayabheri Enclave, Gachibowli, Hyderabad, Telangana 500032'
   },
   {
-    id: 'hub2',
-    name: 'Business Hub - 2',
+    id: 'Global Office',
+    name: 'Global Office',
     address: 'A-10-11, Brickfields, 50470 Kuala Lumpur, Federal Territory of Kuala Lumpur'
   }
 ];

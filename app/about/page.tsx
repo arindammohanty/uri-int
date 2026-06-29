@@ -107,9 +107,11 @@ export default function AboutPage() {
                 alt="Global Digital Technology" 
                 className="bg-slate-100 rounded-3xl h-full w-full object-cover" 
               />
-              <div className="bg-orange-500 rounded-3xl h-full w-full flex items-center justify-center p-6 text-center text-white font-bold shadow-lg shadow-orange-500/20">
-                Est. 2013 - Bhubaneswar, India
-              </div>
+              <img
+		src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+		alt="random"
+		className="bg-slate-100 rounded-3xl h-full w-full object-cover"
+	      />
             </div>
           </div>
 

@@ -31,11 +31,11 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="sticky top-0 z-[100] bg-white border-b border-slate-100 shadow-sm">
+    <nav className="sticky top-0 z-[100] bg-white border-b border-slate-100">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex justify-between items-center h-24">
           
-          <Link href="/" className="flex items-center cursor-pointer bg-slate-900/95 p-3 rounded-2xl hover:bg-slate-900 transition-colors shadow-sm">
+          <Link href="/" className="flex items-center cursor-pointer transition-colors">
             <Image 
               src="/images/logo.png" 
               alt="URI Technologies Logo" 
