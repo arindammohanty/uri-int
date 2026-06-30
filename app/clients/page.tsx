@@ -3,15 +3,12 @@ import Link from 'next/link';
 import { ArrowRight, Building2, Globe2, TrendingUp } from 'lucide-react';
 
 const MOCK_CLIENTS = [
-  { name: "Apex Financial", industry: "Banking", region: "North America", type: "Enterprise" },
-  { name: "Nexus Health Systems", industry: "Healthcare", region: "Europe", type: "Enterprise" },
-  { name: "Zenith Logistics", industry: "Supply Chain", region: "Asia Pacific", type: "Mid-Market" },
-  { name: "Quantum Retail", industry: "E-Commerce", region: "Global", type: "Enterprise" },
-  { name: "Aura Technologies", industry: "SaaS", region: "North America", type: "Startup" },
-  { name: "Stellar Manufacturing", industry: "Industrial", region: "Europe", type: "Enterprise" },
-  { name: "Pioneer Telecom", industry: "Telecommunications", region: "Asia Pacific", type: "Enterprise" },
-  { name: "Vanguard Education", industry: "EdTech", region: "North America", type: "Mid-Market" },
-  { name: "Crest Energy", industry: "Energy", region: "Global", type: "Enterprise" },
+  { name: "Emphasis", industry: "IT Services", region: "Global", type: "Enterprise" },
+  { name: "Wipro", industry: "IT Services", region: "Global", type: "Enterprise" },
+  { name: "TCS", industry: "IT Services", region: "Global", type: "Enterprise" },
+  { name: "HCL", industry: "IT Services", region: "Global", type: "Enterprise" },
+  { name: "Protiviti", industry: "Consulting", region: "Global", type: "Enterprise" },
+  { name: "PWC", industry: "Consulting", region: "Global", type: "Enterprise" },
 ];
 
 export const metadata = {

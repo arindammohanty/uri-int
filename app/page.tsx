@@ -1,28 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Star, CheckCircle, ArrowRight, HelpCircle } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-
-const HERO_SLIDES = [
-  {
-    type: 'video',
-    src: 'https://www.youtube.com/watch?v=paiSoYQhaBE&pp=ygUWYWVzdGhldGljIGZpcmUgYnVybmluZw%3D%3D', 
-    alt: 'URI Technologies Digital Infrastructure Video'
-  },
-  {
-    type: 'image',
-    src: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200',
-    alt: 'Global Enterprise Connectivity'
-  },
-  {
-    type: 'image',
-    src: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200',
-    alt: 'Cyber Security Operations'
-  }
-];
+import { motion } from 'framer-motion';
 
 const MOCK_TESTIMONIALS = [
   { id: 1, name: "David R.", role: "CTO at FinTech Solutions", image: "https://ui-avatars.com/api/?name=David+R&background=FF824D&color=fff", content: "URI Technologies fundamentally transformed our monolithic architecture. Their API & Microservices solutions drastically reduced our deployment times and increased system resilience." },
@@ -39,7 +21,6 @@ const INDUSTRIES = [
   { name: 'Telecommunications', desc: 'Low-latency networks, 5G infrastructure management, and OSS/BSS integrations.', icon: '/industries/telecommunications.png' }
 ];
 
-// Updated to use the actual image paths from public/Logos/
 const CLIENT_LOGOS = [
   { src: "/Logos/ibm.svg", alt: "IBM" },
   { src: "/Logos/salesforce-2.svg", alt: "Salesforce" },
@@ -54,16 +35,6 @@ export default function HomePage() {
   const [formData, setFormData] = useState({ name: '', email: '', company: '', requirement: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [activeCard, setActiveCard] = useState<'mission' | 'vision'>('mission');
-  const [currentSlide, setCurrentSlide] = useState(0);
-  
-  // Auto-play functionality for the Hero Carousel
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 6000); // Transitions every 6 seconds
-    
-    return () => clearInterval(timer);
-  }, []);
 
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,7 +44,6 @@ export default function HomePage() {
   };
 
   return (
-    // Changed the #FF824D to a very subtle #FFF5F0 (Soft Peach/Orange)
     <div className="min-h-screen bg-[linear-gradient(to_bottom,#ffffff_0%,#ffffff_10%,#FFF5F0_45%,#FFF5F0_55%,#F8F9FA_90%,#F8F9FA_100%)] font-sans text-slate-900 pb-0 selection:bg-[#0B1120] selection:text-white overflow-hidden">
       
       <section className="pt-16 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
@@ -122,40 +92,18 @@ export default function HomePage() {
             </div>
           </div>
           
-          {/* Dynamic Hero Carousel */}
+          {/* Static Video Hero */}
           <div className="order-1 lg:order-2 w-full flex justify-end relative h-[400px] lg:h-[600px] rounded-[2rem] overflow-hidden shadow-2xl bg-slate-900 group">
-            <AnimatePresence mode="popLayout">
-              <motion.div
-                key={currentSlide}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="absolute inset-0"
-              >
-                {HERO_SLIDES[currentSlide].type === 'video' ? (
-                  <video 
-                    src={HERO_SLIDES[currentSlide].src}
-                    autoPlay 
-                    muted 
-                    loop 
-                    playsInline 
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <Image 
-                    src={HERO_SLIDES[currentSlide].src} 
-                    alt={HERO_SLIDES[currentSlide].alt} 
-                    fill
-                    className="object-cover"
-                    priority={currentSlide === 0}
-                    unoptimized
-                  />
-                )}
-                {/* Overlay to ensure slide consistency */}
-                <div className="absolute inset-0 bg-slate-900/10 mix-blend-overlay"></div>
-              </motion.div>
-            </AnimatePresence>
+            <video 
+              src="/videos/v1.mp4"
+              autoPlay 
+              muted 
+              loop 
+              playsInline 
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            {/* Overlay to ensure consistency */}
+            <div className="absolute inset-0 bg-slate-900/10 mix-blend-overlay pointer-events-none"></div>
           </div>
         </div>
       </section>

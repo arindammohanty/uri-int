@@ -8,6 +8,34 @@ import Image from 'next/image';
 
 type TabMode = 'Company' | 'Talent';
 
+// Dataset defined at the initial section
+const reviewsData = [
+  {
+    quote: "From the initial conversations all the way through to the project's successful conclusion URI Technologies has delivered consistently ensuring that their unique strategy resulted in a discernible rise in our customers' trust and happiness.",
+    initials: "SS",
+    name: "Satya Swarup",
+    role: "CEO, Absec Lab"
+  },
+  {
+    quote: "The platform has completely transformed how we manage our hiring process by bringing all of our required tools into one simple interface that saves us hours of administrative work every single week.",
+    initials: "JD",
+    name: "Jane Doe",
+    role: "HR Director, TechFlow"
+  },
+  {
+    quote: "Working with this team has been an absolute pleasure because they consistently listen to our feedback and quickly implement changes that make the daily experience much smoother for our entire human resources department.",
+    initials: "MR",
+    name: "Michael Ross",
+    role: "Operations Head, Nexus"
+  },
+  {
+    quote: "Our talent acquisition team can now easily track every candidate from the first application to the final offer letter without having to switch between multiple different applications and spreadsheets.",
+    initials: "AL",
+    name: "Amanda Lin",
+    role: "Talent Acquisition, InnovateHQ"
+  }
+];
+
 export default function CRNLoginPage() {
   const [activeTab, setActiveTab] = useState<TabMode>('Company');
   const [email, setEmail] = useState('');
@@ -16,6 +44,9 @@ export default function CRNLoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  
+  // Carousel State
+  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
 
   // Check URL parameters on mount to set the active tab
   useEffect(() => {
@@ -25,6 +56,15 @@ export default function CRNLoginPage() {
         setActiveTab('Talent');
       }
     }
+  }, []);
+
+  // Auto-rotate carousel timer
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentReviewIndex((prevIndex) => (prevIndex + 1) % reviewsData.length);
+    }, 5000); // Rotates every 5 seconds
+    
+    return () => clearInterval(timer);
   }, []);
 
   const publicDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com'];
@@ -151,20 +191,37 @@ export default function CRNLoginPage() {
             Manage smarter, faster, and secure talent acquisition in seconds with our powerful SaaS platform.
           </p>
 
-          <div className="border border-slate-200 rounded-[2rem] p-8 max-w-xl relative mt-12 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
-            <p className="text-[#A0A4A8] leading-relaxed mb-8 font-bold italic text-lg">
-              From the initial conversations all the way through to the project&apos;s successful conclusion, URI Technologies has delivered consistently. Their unique strategy have resulted in a discernible rise in our customers&apos; trust and happiness. URI Technologies is a great option if you wish to evolve your company&apos;s digital strategy.
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full overflow-hidden bg-slate-100 flex-shrink-0">
-                <div className="w-full h-full bg-slate-200 flex items-center justify-center">
-                   <span className="text-slate-500 font-bold">SS</span>
+          {/* Dynamic Carousel Section */}
+          <div className="border border-slate-200 rounded-[2rem] p-8 max-w-xl relative mt-12 shadow-[0_2px_10px_rgba(0,0,0,0.02)] min-h-[300px] flex flex-col justify-between">
+            <div className="transition-opacity duration-500 ease-in-out">
+              <p className="text-[#A0A4A8] leading-relaxed mb-8 font-bold italic text-lg min-h-[120px]">
+                {reviewsData[currentReviewIndex].quote}
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-slate-100 flex-shrink-0">
+                  <div className="w-full h-full bg-slate-200 flex items-center justify-center">
+                    <span className="text-slate-500 font-bold">{reviewsData[currentReviewIndex].initials}</span>
+                  </div>
+                </div>
+                <div>
+                  <p className="font-bold text-[#2D333A]">{reviewsData[currentReviewIndex].name}</p>
+                  <p className="text-sm text-slate-500 font-medium">{reviewsData[currentReviewIndex].role}</p>
                 </div>
               </div>
-              <div>
-                <p className="font-bold text-[#2D333A]">Satya Swarup</p>
-                <p className="text-sm text-slate-500 font-medium">CEO, Absec Lab</p>
-              </div>
+            </div>
+
+            {/* Carousel Navigation Dots */}
+            <div className="flex gap-2 mt-6">
+              {reviewsData.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentReviewIndex(idx)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    idx === currentReviewIndex ? 'w-8 bg-[#FF6B4A]' : 'w-2 bg-slate-200 hover:bg-slate-300'
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
             </div>
           </div>
         </div>

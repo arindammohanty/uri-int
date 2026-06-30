@@ -180,7 +180,7 @@ export default function ManagedServiceSubPage() {
               </p>
               <div className="space-y-3 text-sm font-bold">
                 <div className="flex items-center text-orange-50"><Mail className="w-4 h-4 mr-2" /> sales@uritechnologies.com</div>
-                <div className="flex items-center text-orange-50"><Globe className="w-4 h-4 mr-2" /> Sahid Nagar, Bhubaneswar</div>
+                <div className="flex items-center text-orange-50"><Globe className="w-4 h-4 mr-2" /> 1-60/30, Gachibowli - Miyapur Rd, Jayabheri Enclave, Gachibowli, Hyderabad, Telangana 500032</div>
               </div>
             </div>
           </aside>

@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { 
-  CheckCircle, ArrowLeft
+  CheckCircle, ArrowLeft, Upload
 } from 'lucide-react';
 
 const COUNTRY_CODES = [
@@ -92,12 +92,12 @@ const COUNTRY_CODES = [
 const OFFICE_LOCATIONS = [
   {
     id: 'india',
-    name: 'India Office (Bhubaneshwar)',
+    name: 'India Office - Bhubaneshwar',
     address: 'B-36, 2nd Floor, Rupali Street Sahid Nagar , Bhubaneswar - 751007'
   },
   {
     id: 'hub1',
-    name: 'India Office (Hyderabad)',
+    name: 'India Office - Hyderabad',
     address: '1-60/30, Gachibowli - Miyapur Rd, Jayabheri Enclave, Gachibowli, Hyderabad, Telangana 500032'
   },
   {
@@ -107,14 +107,66 @@ const OFFICE_LOCATIONS = [
   }
 ];
 
+const JOB_ROLES = [
+  "ServiceNow Developer",
+  "Frontend Engineer",
+  "Backend Engineer",
+  "Full Stack Developer",
+  "Cloud Architect",
+  "DevOps Engineer",
+  "Data Scientist",
+  "Machine Learning Engineer",
+  "UI/UX Designer",
+  "Product Manager",
+  "Scrum Master",
+  "QA Engineer",
+  "Security Analyst",
+  "Database Administrator",
+  "Systems Administrator"
+].sort();
+
 export default function ContactPage() {
   const [formType, setFormType] = useState<'business' | 'career'>('business');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [activeLocation, setActiveLocation] = useState(0);
+  
+  const [jobRoleSearch, setJobRoleSearch] = useState('');
+  const [isRoleDropdownOpen, setIsRoleDropdownOpen] = useState(false);
+  
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const jobRoleInputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitted(true);
+  };
+
+  const filteredRoles = JOB_ROLES.filter(role =>
+    role.toLowerCase().includes(jobRoleSearch.toLowerCase())
+  );
+
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+    
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      setSelectedFile(e.dataTransfer.files[0]);
+    }
   };
 
   return (
@@ -130,7 +182,7 @@ export default function ContactPage() {
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight">Get In Touch</h1>
           <p className="text-lg md:text-xl text-slate-500 max-w-2xl leading-relaxed">
-            Whether you&apos;re looking to transform your enterprise infrastructure or join our engineering team, we&apos;d love to hear from you.
+            Whether you're looking to transform your enterprise infrastructure or join our engineering team, we'd love to hear from you.
           </p>
         </div>
       </section>
@@ -139,7 +191,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           
           <div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">Let&apos;s Connect</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">Let's Connect</h2>
             <p className="text-lg text-slate-500 mb-8 leading-relaxed">
               Reach out to our architects. We respond to all technical inquiries within one business day.
             </p>
@@ -253,7 +305,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-slate-900 mb-2">Phone Number</label>
+                    <label className="block text-sm font-bold text-slate-900 mb-2">Phone Number <span className="text-red-500">*</span></label>
                     <div className="flex shadow-sm rounded-xl">
                       <select 
                         defaultValue="+91"
@@ -266,13 +318,16 @@ export default function ContactPage() {
                         ))}
                       </select>
                       <input 
+                        required
                         type="tel" 
                         pattern="\d{10}"
                         maxLength={10}
                         minLength={10}
                         onInput={(e) => {
                           e.currentTarget.value = e.currentTarget.value.replace(/\D/g, '');
+                          (e.target as HTMLInputElement).setCustomValidity('');
                         }}
+                        onInvalid={e => (e.target as HTMLInputElement).setCustomValidity('Please fill out all mandatory fields.')}
                         placeholder="10-digit number"
                         className="w-full px-4 py-3 rounded-r-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent focus:z-10 transition-all" 
                       />
@@ -295,20 +350,91 @@ export default function ContactPage() {
                     </>
                   ) : (
                     <>
-                      <div>
+                      <div className="relative">
                         <label className="block text-sm font-bold text-slate-900 mb-2">Target Job Role <span className="text-red-500">*</span></label>
                         <input 
+                          ref={jobRoleInputRef}
                           required 
                           type="text" 
                           placeholder="e.g. ServiceNow Developer" 
+                          value={jobRoleSearch}
+                          onChange={(e) => {
+                            setJobRoleSearch(e.target.value);
+                            setIsRoleDropdownOpen(true);
+                          }}
+                          onFocus={() => setIsRoleDropdownOpen(true)}
+                          onBlur={() => setTimeout(() => setIsRoleDropdownOpen(false), 200)}
                           className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
                           onInvalid={e => (e.target as HTMLInputElement).setCustomValidity('Please fill out all mandatory fields.')}
                           onInput={e => (e.target as HTMLInputElement).setCustomValidity('')}
                         />
+                        {isRoleDropdownOpen && (
+                          <ul className="absolute z-10 w-full mt-1 bg-white border border-slate-200 rounded-xl shadow-lg max-h-60 overflow-auto">
+                            {filteredRoles.length > 0 ? (
+                              filteredRoles.map((role) => (
+                                <li
+                                  key={role}
+                                  onClick={() => {
+                                    setJobRoleSearch(role);
+                                    setIsRoleDropdownOpen(false);
+                                    if (jobRoleInputRef.current) {
+                                      jobRoleInputRef.current.setCustomValidity('');
+                                    }
+                                  }}
+                                  className="px-4 py-2 hover:bg-slate-50 cursor-pointer text-sm text-slate-700"
+                                >
+                                  {role}
+                                </li>
+                              ))
+                            ) : (
+                              <li className="px-4 py-2 text-sm text-slate-500 italic">
+                                please enter valid job roles
+                              </li>
+                            )}
+                          </ul>
+                        )}
                       </div>
+                      
                       <div>
                         <label className="block text-sm font-bold text-slate-900 mb-2">LinkedIn Profile URL</label>
                         <input type="url" placeholder="https://linkedin.com/in/..." className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all" />
+                      </div>
+                      
+                      <div>
+                        <label className="block text-sm font-bold text-slate-900 mb-2">Upload your CV <span className="text-red-500">*</span></label>
+                        <div className="flex items-center gap-4">
+                          <div 
+                            onDragOver={handleDragOver}
+                            onDragLeave={handleDragLeave}
+                            onDrop={handleDrop}
+                            className={`relative flex flex-col items-center justify-center p-6 border-2 border-dashed rounded-xl transition-all duration-200 w-full font-medium text-sm overflow-hidden ${
+                              isDragging 
+                                ? 'bg-orange-50 border-orange-400 text-orange-600 scale-[1.02]' 
+                                : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100 hover:border-slate-300'
+                            }`}
+                          >
+                            <Upload className={`w-6 h-6 mb-2 ${isDragging ? 'text-orange-500' : 'text-slate-400'}`} />
+                            <span className="text-center px-4 relative z-10 pointer-events-none">
+                              {selectedFile ? selectedFile.name : 'Choose a file or drag & drop it here'}
+                            </span>
+                            <span className="text-xs text-slate-400 font-normal mt-1 relative z-10 pointer-events-none">
+                              PDF, DOC, DOCX up to 10MB
+                            </span>
+                            <input
+                              required
+                              type="file"
+                              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20"
+                              accept=".pdf,.doc,.docx"
+                              onChange={(e) => {
+                                if (e.target.files && e.target.files.length > 0) {
+                                  setSelectedFile(e.target.files[0]);
+                                  (e.target as HTMLInputElement).setCustomValidity('');
+                                }
+                              }}
+                              onInvalid={e => (e.target as HTMLInputElement).setCustomValidity('Please fill out all mandatory fields.')}
+                            />
+                          </div>
+                        </div>
                       </div>
                     </>
                   )}
