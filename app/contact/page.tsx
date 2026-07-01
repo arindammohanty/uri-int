@@ -182,7 +182,7 @@ export default function ContactPage() {
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight">Get In Touch</h1>
           <p className="text-lg md:text-xl text-slate-500 max-w-2xl leading-relaxed">
-            Whether you're looking to transform your enterprise infrastructure or join our engineering team, we'd love to hear from you.
+            Whether you&apos;re looking to transform your enterprise infrastructure or join our engineering team, we&apos;d love to hear from you.
           </p>
         </div>
       </section>
@@ -191,7 +191,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           
           <div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">Let's Connect</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">Let&apos;s Connect</h2>
             <p className="text-lg text-slate-500 mb-8 leading-relaxed">
               Reach out to our architects. We respond to all technical inquiries within one business day.
             </p>
